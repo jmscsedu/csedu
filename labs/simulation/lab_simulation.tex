@@ -1,0 +1,118 @@
+\input{includes/preamble}
+
+\def\LabCourse{AP Computer Science A}
+\def\LabNumber{02}
+\def\LabTitle{Simulation Lab}
+
+\begin{document}
+	\begin{coverpages}
+		\ \\[2cm]
+		\begin{center}
+			\huge
+			\textbf{\LabTitle}
+
+			\Large
+			\LabCourse
+		\end{center}
+
+		\vspace{1.5cm}
+
+		\begin{center}
+			\includegraphics[scale=0.45]{graphics/logo_black}
+
+			\vspace{2.5cm}
+
+			\Large
+			Name: \rule{11.5cm}{0.1pt}
+		\end{center}
+	\end{coverpages}
+
+	\blankpage
+
+	\thispagestyle{empty}
+	\tableofcontents
+
+	\pagebreak
+
+	\section{Background}
+		Computer scientists design simulations in order to test hypothesis, examine effects of different variables, and predict outcomes of different phenomena that are otherwise difficult to observe. They are employed in this capacity by a wide range of different fields and have become an integral part of many research studies.\\[\baselineskip]
+	  In this lab, you will be creating, running, and examining a simulation expressed as a thought exercise for Computer Science. You will also consider how this simulation might be used to examine a variety of different applications.
+
+	  \subsection{Simulation: The Rumor}
+		  Imagine that Alice is throwing a party for $n$ guests, including Bob. Bob starts a rumour about Alice by telling it to one of the other guests. A person hearing this rumour for the first time will immediately tell it to one other guest, chosen at random from all the people at the party except Alice and the person from whom they heard it. If a person (including Bob) hears the rumour for a second time, he or she will not propagate it further.
+
+	  \subsection{Examples}
+	  	\EBox{Guests: Bob, John, Judy, and Erica}{
+	    	When Bob arrives at the party, he tells John the rumour about Alice. John then tells Erica, who prompty tells Bob again. Since Bob already knows the rumour (having started it himself!), he stops spreading the rumour. Because the rumour stops propagating, Judy never gets to hear the juicy gossip about Alice.
+	  	}
+	  	\ \\[18pt]
+		  \EBox{Guests: Bob, Larry, Lucinda, Lucille, Lilly, Logan, Liam, and Lee}{
+		    When Bob arrives at the party, he tells Lucille about Alice. Lucille tells Lilly, who then tells Lucinda. Lucinda decides to tell Lucille again, who stops propagating the rumour. Larry, Logan, Liam, and Lee have never heard the rumour!
+		  }
+
+	\pagebreak
+
+	\section{Applications}
+		\QBox{After Bob has told the rumour to a new guest, how many guests can that person select from to tell the rumour to? Express your answer in terms of $n$, the total number of guests at the party.}{2cm}
+		\ \\[9pt]
+		\QBox{What is the probability of the rumour continuing after the $m^{\text{th}}$ person ($m \leq n$) has heard it? Express your answer in terms of $n$ and $m$.}{2cm}
+		\ \\[9pt]
+		\QBox{Why is the next guest to hear the rumour chosen at random? What real-world considerations might be covered by ``randomness'' in this case?}{5.5cm}
+		\ \\[9pt]
+		\QBox{What assumptions are being made by the fact that the rumour stops propagating after a person has heard it for the second time? Why is this condition necessary for the purpose of this simulation?}{5.5cm}
+
+	\pagebreak
+
+	\section{Activity \#1}
+		\subsection{Introduction}
+			In this activity, you will create a Java program simulation the situation presented in the background. In particular, your simulation will calculate the number of guests who have heard the rumour about Alice before it stops propagating.
+
+		\subsection{Exercises}
+			\begin{enumerate}
+				\item Implement the method, \code{runSimulation()}, that will accept \code{n}, the number of guests (including Bob) invited to Alice's party, run the simulation once according to the details described in the background, and return the number of guests that have heard the rumour before it stops propagating.
+				\item Implement an overloaded \code{runSimulation()} method that will additionally accept \code{N}, the number of times to run the simulation. Your method should return an array representing the number of guests that have heard the rumour before it stops propagating after running the simulation each of \code{N} times.
+			\end{enumerate}
+
+		\subsection{Questions}
+			\QBox{Briefly explain how you kept track of who in the party had already heard the rumour.}{5cm}
+			\ \\[9pt]
+			\QBox{Briefly explain how you generated a random guest to tell the rumour to while excluding who was spreading the rumour as well as the guest he/she heard the rumour from.}{5cm}
+
+	\pagebreak
+
+	\section{Activity \#2}
+		\subsection{Introduction}
+			In this activity, you will be using your simulation in order to estimate statistical and probabilistic values about the scenario presented. When run repeatedly, simulations can be used to search for average or expected values, as well as testing for the probability of rare (hard to observe) situations.
+
+		\subsection{Exercises}
+			\begin{enumerate}
+				\item Create the method, \code{estimateProbability()}, that will accept \code{n}, the number of guests (including Bob) invited to Alice's party, and run the simulation in order to return an estimation for the probability that \emph{at least} \code{r} guests will hear the rumour before it stops propagating.\\
+				{\textbf{Note:} You will have to decide how many times to run the simulation in order to provide a good estimate of this probability.}
+				\item Create the method, \code{estimateExpectedValue()}, that will accept \code{n}, the number of guests (including Bob) invited to Alice's party, and run the simulation in order to return the average number of people to hear the rumour.\\
+				{\textbf{Note:} You will have to decide how many times to run the simulation in order to provide a good estimate of this average.}
+			\end{enumerate}
+
+		\subsection{Questions}
+			\QBox{Briefly explain how you chose the number of times to run the simulation for each \code{estimateProbability()} and \code{estimateExpectedValue().}}{4cm}
+			\ \\[9pt]
+			\QBox{How does varying the value of \code{n} affect the values returned by \code{estimateProbability()} and \code{estimateExpectedValue()}. Discuss trends rather than specific values.}{4cm}
+
+\pagebreak
+
+
+	\section{Final Analysis}
+		\QBox{Although this particular simulation seems contrived, it can be modified to apply to the spread of computer viruses and human disease. Do you feel that considering contrived applications of simulations contributes anything to it's application to more real-world scenarios? Explain why or why not.}{4cm}
+		\ \\[9pt]
+		\QBox{Why is it important to write simulations so that they can be run with various different input values as well as multiple times with the same input values?}{4cm}
+		\ \\[9pt]
+		\QBox{Which part of implementing \code{runSimulation()}, \code{estimateProbability()}, or \code{estimateExpectedValue()} did you find most challenging? How did you overcome these challenges?}{4cm}
+		\ \\[9pt]
+		\QBox{What new programming techniques or knowledge did you learn as a result of this lab?}{4cm}
+
+	\pagebreak
+	\blankpage
+
+	\section{Template Class \& Test Cases}
+		\lstinputlisting[basicstyle=\small\ttfamily,tabsize=2]{files/Simulation.java}
+
+\end{document}
