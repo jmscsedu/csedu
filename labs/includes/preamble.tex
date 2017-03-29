@@ -1,0 +1,48 @@
+\documentclass[10pt]{exam}
+\usepackage[T1]{fontenc}
+\usepackage[paper=a4paper,margin=2cm]{geometry}
+\usepackage[sfdefault,light]{roboto}
+
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{amsmath,amssymb,graphicx,enumitem,listings,multicol,titlesec}
+\usepackage{mathtools}
+
+\setlength\parindent{0cm}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{}{0em}{}{\titlerule[0.5pt]}]
+\titleformat{\subsection}{\normalfont\large\bfseries}{}{0em}{}
+
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\code}[1]{\lstinline{#1}}
+\newcommand{\blankpage}{\null\thispagestyle{empty}\addtocounter{page}{-1}\newpage}
+
+\lstset{language=Java,
+	basicstyle=\ttfamily,
+	commenstyle=\color{black!45},
+	keywordstyle=\bfseries,
+	showstringspaces=false}
+
+\newcommand{\Ebox}[2]{
+	\colorbox{black!10}{\parbox{0.9875\textwidth}{\bfseries
+		#1
+	}}
+
+	\colorbox{black!5}{\parbox{0.9875\textwidth}{
+		#2
+	}}
+}
+
+\newcounter{QuestionCounter}
+\newcommand{\QBox}[2]{
+	\stepcounter{QuestionCounter}
+	\colorbox{black!10}{\parbox{0.9875\textwidth}{
+		\textbf{Question \#\theQuestionCounter:} #1
+	}}
+
+	\colorbox{black!5}{\parbox{0.9875\textwidth}{
+		\ \\[#2]
+	}}
+}
+
+\header{Lab \#\LabNumber: \LabTitle}
+\cfoot{Woodstock School---Mussoorie, Uttarakhand---India}
