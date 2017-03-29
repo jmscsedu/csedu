@@ -1,0 +1,161 @@
+\input{includes/preamble}
+
+\def\LabCourse{AP Computer Science A}
+\def\LabNumber{01}
+\def\LabTitle{Calendar Lab}
+
+\begin{document}
+	\begin{coverpages}
+		\ \\[2cm]
+		\begin{center}
+			\huge
+			\textbf{\LabTitle}
+
+			\Large
+			\LabCourse
+		\end{center}
+
+		\vspace{1.5cm}
+
+		\begin{center}
+			\includegraphics[scale=0.45]{graphics/logo_black}
+
+			\vspace{2.5cm}
+
+			\Large
+			Name: \rule{11.5cm}{0.1pt}
+		\end{center}
+	\end{coverpages}
+
+	\blankpage
+
+	\thispagestyle{empty}
+	\tableofcontents
+
+	\pagebreak
+
+	\section{Background}
+		In this lab, you will be creating a method for finding the day of the week for any given date (day, month, year) and will use that method for generating a full calendar display for a given month.\\[\baselineskip]
+		There have been a number of different algorithms developed to calculate what dy of the week a given past or future date falls on. Although many of these methods require faily complex look-up tables, a formula has been developed that can be used to directly calculate the day of the week without having to store or process these tables. This formula is given below:
+	
+		\[
+			w = \left(d + \floor{2.6m - 0.2} + y + \floor{\dfrac{y}{4}} + \floor{\dfrac{c}{4}} - 2c\right) \mathbf{mod}\ 7
+		\]
+
+		Note the following:
+		\begin{itemize}
+			\item $\floor{x}$ is the \emph{floor} operator, accessible via \code{Math.floor(x)}
+			\item $\mathbf{mod}$ is the \emph{modulus} operator (\code{\%})
+			\item $Y$ is the year minus $1$ for January or February
+			\item $y$ is the last $2$ digits of $Y$
+			\item $c$ is the first $2$ digits of $Y$
+			\item $d$ is the day of the month ($1$ to $31$)
+			\item $m$ is the shifted month (March=1,...,February=12)
+			\item $w$ is the day of the week (0=Sunday,...,6=Saturday)
+		\end{itemize}
+
+		Remarkably, this method will work regardless of whether or not a given year is a leap year. Consider the following examples.
+	
+		\subsection{Examples}
+			\EBox{July 9, 1983}{
+				\[
+					w = \left(9 + \floor{2.6(5) - 0.2} + 83 + \floor{\dfrac{83}{41}} + \floor{\dfrac{19}{4}} - 2(19)\right) \mathbf{mod}\ 7 = 6
+				\]
+				\textbf{Result:} \emph{Saturday}
+			}
+			\ \\[18pt]
+			\EBox{April 15, 2016}{
+				\[
+					w = \left(15 + \floor{2.6(2) - 0.2} + 16 + \floor{\dfrac{16}{4}} + \floor{\dfrac{20}{4}} - 2(20)\right) \mathbf{mod}\ 7 = 5
+				\]
+				\textbf{Result:} \emph{Friday}
+			}
+			\ \\[18pt]
+			\EBox{January 30, 2000}{
+				\[
+					w = \left(30 + \floor{2.6(11) - 0.2} + 99 + \floor{\dfrac{99}{4}} + \floor{\dfrac{11}{4}} - 2(19)\right) \mathbf{mod}\ 7 = 0
+				\]
+				\textbf{Result:} \emph{Sunday}
+			}
+
+	\pagebreak
+
+	\section{Applications}
+		\QBox{Use the formula described in the background to calculate the day of the week for your birthday this year. Then, calculate the day of the week for your original birthday.}{4cm}
+		\ \\[9pt]
+		\QBox{Explain what happens when you attempt to calculate the day of the week for a non-existent day (February 29, 2017 or July 33, 2020). Is the result consisitent with what you would expect for this kind of formula? Explain why or why not.}{4cm}
+		\ \\[9pt]
+		\QBox{In September, 1752, Britain and its colonies began using the Gregorian calendar. This caused Thursday, September 14, 1752 to be preceded by Wednesday, September 2, 1752. Will the formula described in the background take this calendar switch into account? Explain why or why not.}{4cm}
+		\ \\[9pt]
+		\QBox{What modification, if any, could you make to the formula described in the background to allow for the beginning of the week ($w = 0$) to be Monday?}{4cm} \pagebreak
+	
+	\section{Activity \#1}
+		\subsection{Introduction}
+			In this activity, you will be creating two methods: one that will use the formula described in the background and return the numeric value of $w$ and one that will return the day of the week as a string. These methods will be important for the second activity.
+
+		\subsection{Exercises}
+			\begin{enumerate}
+				\item Implement the \code{calculateDayOfWeek()} method. This method should take as parameters the \code{day}, \code{month}, and \code{year} for the desired date and return the day of the week for that date as a number between 0 and 6.
+				\item Implement the \code{getDayOfWeek()} method. This method should take as parameters the \code{day}, \code{month}, and \code{year} for the desired date and return the day of the week as a string (``Monday'', ``Tuesday'', etc.).
+							{\small\textbf{Note:} Your \code{getDayOfWeek()} method should use the \code{calculateDayOfWeek()} method previously implemented.}
+			\end{enumerate}
+
+		\subsection{Questions}
+			\QBox{Briefly explain the method you used to calculate $y$ and $c$ from the \code{year} variable that was passed.}{5cm}
+			\ \\[9pt]
+			\QBox{Why do you think it is considered ``better practice'' to have used the \code{calculateDayOfWeek()} method within the implementation of \code{getDayOfWeek()} rather than just repeating the use of the formula?}{5cm}
+
+	\pagebreak
+
+	\section{Activity \#2}
+		\subsection{Introduction}
+			In this activity, you will be creating a method to display a calendar for a given month and year. The output of your method should create a calendar similar to the one shown below.
+			\begin{center}
+				\small
+				\begin{tabular}{c c c c c c c}
+					\multicolumn{7}{c}{January, 2017}\\
+					Mo & Tu & We & Th & Fr & Sa & Su\\
+					\ & \ & \ & 01 & 02 & 03 & 04 \\
+					05 & 06 & 07 & 08 & 09 & 10 & 11 \\
+					12 & 13 & 14 & 15 & 16 & 17 & 18 \\
+					19 & 20 & 21 & 22 & 23 & 24 & 25 \\
+					26 & 27 & 28 & 29 & 30 & 31
+				\end{tabular}
+			\end{center}
+			In particular, note the following:
+			\begin{itemize}
+				\item The month and year are displayed above the main calendar.
+				\item There are blank spaces for days prior to the start of the month and after the end of the month.
+				\item Single digit days are displayed with a leading ``0''.
+			\end{itemize}
+
+		\subsection{Exercise}
+			\begin{enumerate}
+				\item Implement the \code{isLeapYear()} method which will take a year as input and produce \code{true} if the given year is a leap year and \code{false} otherwise.
+				\item Implement the \code{printCalendar()} method which will take a month and year as input and produce the output described in the introduction to this activity.\\
+			{\small\textbf{Note:} Unlike the formula you used for \code{calculateDayOfWeek()}, your implementation of \code{printCalendar()} will have to use \code{isLeapYear()} in order to manually handle February's calendar output.}
+			\end{enumerate}
+
+		\subsection{Questions}
+			\QBox{Briefly explain what considerations you needed to make to take leap-years into account.}{5cm}
+			\ \\[9pt]
+			\QBox{Briefly explain how you handled the variable number of days in each month.}{5cm}
+
+	\pagebreak
+
+	\section{Final Analysis}
+		\QBox{Which part of the implementation of either \code{calculateDayOfWeek()} or \code{getDayOfWeek()} did you find most challenging? How did you overcome this challenge?}{4cm}
+		\ \\[9pt]
+		\QBox{Which part of the implementation of \code{printCalendar()} did you find most challenging? How did you overcome this challenge?}{4cm}
+		\ \\[9pt]
+		\QBox{Given the knowledge and opportunity, what features would you add to your implemented methods to make them more useful and/or more versatile?}{4cm}
+		\ \\[9pt]
+		\QBox{What new programming techniques or knowledge did you learn as a result of this lab?}{4cm}
+
+	\pagebreak
+	\blankpage
+
+	\section{Template Class \& Test Cases}
+		\lstinputlisting[basicstyle=\small\ttfamily,tabsize=2]{files/Calendar.java}
+
+\end{document}
