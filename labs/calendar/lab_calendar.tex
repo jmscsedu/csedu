@@ -1,4 +1,4 @@
-\input{includes/preamble}
+\input{includes/lab_preamble}
 
 \def\LabCourse{AP Computer Science A}
 \def\LabNumber{01}
@@ -37,7 +37,7 @@
 	\section{Background}
 		In this lab, you will be creating a method for finding the day of the week for any given date (day, month, year) and will use that method for generating a full calendar display for a given month.\\[\baselineskip]
 		There have been a number of different algorithms developed to calculate what dy of the week a given past or future date falls on. Although many of these methods require faily complex look-up tables, a formula has been developed that can be used to directly calculate the day of the week without having to store or process these tables. This formula is given below:
-	
+
 		\[
 			w = \left(d + \floor{2.6m - 0.2} + y + \floor{\dfrac{y}{4}} + \floor{\dfrac{c}{4}} - 2c\right) \mathbf{mod}\ 7
 		\]
@@ -55,7 +55,7 @@
 		\end{itemize}
 
 		Remarkably, this method will work regardless of whether or not a given year is a leap year. Consider the following examples.
-	
+
 		\subsection{Examples}
 			\EBox{July 9, 1983}{
 				\[
@@ -88,7 +88,7 @@
 		\QBox{In September, 1752, Britain and its colonies began using the Gregorian calendar. This caused Thursday, September 14, 1752 to be preceded by Wednesday, September 2, 1752. Will the formula described in the background take this calendar switch into account? Explain why or why not.}{4cm}
 		\ \\[9pt]
 		\QBox{What modification, if any, could you make to the formula described in the background to allow for the beginning of the week ($w = 0$) to be Monday?}{4cm} \pagebreak
-	
+
 	\section{Activity \#1}
 		\subsection{Introduction}
 			In this activity, you will be creating two methods: one that will use the formula described in the background and return the numeric value of $w$ and one that will return the day of the week as a string. These methods will be important for the second activity.
