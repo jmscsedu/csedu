@@ -1,7 +1,7 @@
 #!/bin/bash
 # Simple bash script for generating the file structure for a new lab.
 
-prefix="labs/lab_$1"
+prefix="labs/$1"
 
 # Create the directory structure:
 
