@@ -1,0 +1,210 @@
+\input{includes/lab_preamble}
+\usepackage[utf8]{inputenc}
+
+\def\LabCourse{AP Computer Science A}
+\def\LabNumber{05}
+\def\LabTitle{Calculator Lab}
+
+\newcommand\QBlankBox[1]{
+\stepcounter{QuestionCounter}
+	\colorbox{black!10}{\parbox{0.9875\textwidth}{
+	  \raggedright
+	  \textbf{Question \#\theQuestionCounter:} #1
+	}}
+}
+
+\newcommand\QFilledBox[2]{
+\stepcounter{QuestionCounter}
+	\colorbox{black!10}{\parbox{0.9875\textwidth}{
+	  \raggedright
+	  \textbf{Question \#\theQuestionCounter:} #1
+	}}
+
+	\colorbox{black!5}{\parbox{0.9875\textwidth}{
+		\raggedright
+		#2
+	}}
+}
+
+\begin{document}
+	\begin{coverpages}
+		\ \\[2cm]
+		\begin{center}
+			\huge
+			\textbf{\LabTitle}
+
+			\Large
+			\LabCourse
+		\end{center}
+
+		\vspace{1.5cm}
+
+		\begin{center}
+			\includegraphics[scale=0.45]{graphics/logo_black}
+
+			\vspace{2.5cm}
+
+			\Large
+			Name: \rule{11.5cm}{0.1pt}
+		\end{center}
+	\end{coverpages}
+
+	\blankpage
+
+	\thispagestyle{empty}
+	\tableofcontents
+
+	\pagebreak
+
+	\section{Background}
+		Modern calculators and even many search engines have become adept at reading strings of mathematical symbols and being able to calculate the value of the given expression. Type into a Google search bar the expression: \code{3 + 4 * 8 - 16 / 32} and Google will correctly return the value \code{34.5}. In this lab, you will be implementing methods that will take in strings of characters, like the example above, and return the correctly calculated value of the expression.\\[\baselineskip]
+		Before we begin, we first need to explore a number of different ways that have been developed to write a given mathematical expression. Each method differs in the abilities of humans and computers to read and process them. In fact, our tasks will primarily hinge on teaching a computer to read and process the most ``computer-readable'' version and then convert the others to that version.\\[\baselineskip]
+		Note that for the purposes of this lab, only the four basic, binary arithmetic operators ($+$, $-$, $\times$, $\div$) are going to be considered; however, all of the concepts explored here can be extended to handle more complex mathematical expressions and operations.
+
+		\subsection{Three Different Notations}
+			\EBox{Infix Notation}{
+				\emph{Infix notation} is the notation you are likely familiar with. When using infix notation, the binary operators are placed \emph{between} the numbers to be operated on (called its \emph{operands}). Here are a few examples:
+				\begin{center}
+					\begin{tabular}{p{0.3\textwidth} p{0.3\textwidth} p{0.3\textwidth}}
+						$5 + 7$ & $12 + 6 - 3$ & $3 + 4 \times 8 - 16 \div 32$
+					\end{tabular}
+				\end{center}
+				Note that the order of operations (\emph{PEMDAS}/\emph{BODMAS}) dictates how complex expressions are evaluated.
+			}
+			\ \\[9pt]
+			\EBox{Prefix Notation/Polish Notation}{
+				First described by Polish logician Jan Łukasiewicz in 1924, \emph{prefix notation} places each operator \emph{before} its operands. Here are the same examples as above, this time in prefix notation:
+				\begin{center}
+					\begin{tabular}{p{0.3\textwidth} p{0.3\textwidth} p{0.3\textwidth}}
+						$+\ 5\ 7$ & $-\ +\ 12\ 6\ 3$ & $-\ +\ 3\ \times\ 4\ 8\ \div\ 16\ 32$
+					\end{tabular}
+				\end{center}
+				Prefix notation has the benefit of allowing for complex expressions to follow an explicit order of operations \emph{without parenthesis or brackets}. A properly written expression can be evaluated from left-to-right. In this way, the order of operations dictates how an expression is written, rather than how it is evaluated.\\[\baselineskip]
+				Note that for non-commutative operations ($-$ or $\div$), the order of the operands follows their order in the written expression. That is: $\div\ 16\ 32$ will always evaluate to $0.5$ and never to $2$.
+			}
+			\ \\[9pt]
+			\EBox{Postfix Notation/Reverse-Polish Notation}{
+				 Although prefix notation was first described in the 1920's, \emph{postfix notation} was only introduced in the 1950's. It was later described by famed Edsger Dijkstra as a way of evaluating mathematical expressions requiring fewer calls to computer memory. Unsurprisingly, prefix notation places each operator \emph{after} its operands. Here, again, are the same exmaples as above, this time in postfix notation:
+				 \begin{center}
+					 \begin{tabular}{p{0.3\textwidth} p{0.3\textwidth} p{0.3\textwidth}}
+						 $5\ 7\ +$ & $12\ 6\ +\ 3\ -$ & $3\ 4\ 8\ \times\ +\ 16\ 32\ \div\ -$
+					 \end{tabular}
+				 \end{center}
+				 As with prefix notation, the order of the operands for non-commutative operations follows their order in the written expression. Thus, $16\ 32\ \div$ evaluates to $0.5$.
+			}
+			\ \\[18pt]
+		Although infix notation is most likely easiest for us to read, it is actually fairly difficult for a computer to process correctly, particularly once additional operators and symbols, such as parenthesis or brackets, are added into it. Because of this, Activity \#1 will ask you to first implement a postfix notation calculator.
+	\section{Applications}
+		\QFilledBox{Although parenthesis are not explicitly required by prefix or postfix notation, they do help for human-readability, and so that you can better understand how these expressions are evaluated. Consider the following:
+			\[ -\ +\ 12\ 6\ 3\ \to -\ (+\ 12\ 6)\ 3 \]
+		The parenthesis make it more clear that the $+$ operator uses the two immediate operands that follow it. It is then clearer that the $-$ operator has operands: $(+\ 12\ 6)$ and $3$, or $18$ and $3$.\\[\baselineskip]
+		Add parenthesis to each of the following prefix or postfix expressions.
+		}{
+			\ \\[24pt]
+			\begin{minipage}{0.25\textwidth}
+				$+\ \times\ 3\ 2\ -\ 6\ 4$
+			\end{minipage}\begin{minipage}{0.25\textwidth}
+				$+\ 5\ 7\ -\ 3\ \div\ 10\ 5$
+			\end{minipage}\begin{minipage}{0.25\textwidth}
+				$7\ 4\ -\ 6\ 5\ +\ \times$
+			\end{minipage}\begin{minipage}{0.25\textwidth}
+				$3\ 4\ 8\ \times\ +\ 16\ 32\ \div\ -$
+			\end{minipage}
+			\ \\[24pt]
+		}
+		\ \\[9pt]
+		\QBox{Evaluate each of the expressions in Question \#1.}{4cm}
+		\ \\[9pt]
+		\QFilledBox{Convert the following infix expression to a prefix and a postfix one.
+			\[ 5 \times 3 + 6 + (4 - 2) \]
+		}{
+			\begin{minipage}{0.5\textwidth}
+				\textbf{Prefix:}
+			\end{minipage}\begin{minipage}{0.5\textwidth}
+				\textbf{Postfix:}
+			\end{minipage}
+			\ \\[3.9cm]
+		}
+		\ \\[9pt]
+		\QBox{Why do you think a computer has an easier time handling prefix and postfix notations instead of infix notation?}{4cm}
+
+	\pagebreak
+
+	\section{Activity \#1}
+		\subsection{Introduction}
+			As it was noted in the background, postfix notation has been suggested as desirable for the evaluation of mathematical expressions within a computer system due to lower memory requirements than prefix notation. The reason for this is simple: when processing a string of characters representing a mathematical expression in postfix, once an operator is encountered it can be immediately evaluated. This is because all of its operands will already have been processed and stored in memory.\\[\baselineskip]
+			For example, an expression like this: \code{2 3 4 + -}, will have the \code{3} and \code{4} in memory as soon as the operator, \code{+} is encountered. The result, \code{7}, can then be calculated and stored in anticipation of future operators. Compare that to the prefix expression: \code{- + 3 4 2}. Here, the computer must process and store the \code{-} operator before it can be evaluated because its operands are not yet in memory, then process and store the \code{+} operator because its operands, too, are not in memory. Although alternative methods for processing prefix notation have been developed, during the 1960's the benefits of postfix notation were clear.\\[\baselineskip]
+			Because postfix notation has been the dominant form of writing expressions for computer evaluation since then, implementing a method for processing it will be your first exercise in this Activity. You will then process prefix notation, hopefully using some of the techniques learned while working on the \code{evalPostfix()} method. Each of these methods will rely heavily on the stack data structure for storing and accessing processed information.
+
+		\subsection{Exercises}
+			\begin{enumerate}
+				\item Implement the \code{evalPostfix()} method, which will take as a parameter a \code{String} holding a mathematical expression in postfix notation and return the result of evaluating that expression.\\
+				{\small\textbf{Note:} Remember that, for our purposes, $\times \to *$ and $\div \to /$.}\\
+				{\small\textbf{Hint:} Use a stack to hold the operands.}
+				\item Implement the \code{evalPrefix()} method, which will take as a parameter a \code{String} holding a mathematical expression in prefix notation and return the result of evaluating that expression.\\
+				{\small\textbf{Hint:} You may want to consider evaluating the expression backwards (right to left).}
+			\end{enumerate}
+
+		\subsection{Questions}
+			\QBox{Explain how you determined whether or not a given character/characters was an operation or an operand.}{4cm}
+			\ \\[9pt]
+			\QBox{Why is evaluating an expression in prefix notation backwards easier?}{4cm}
+
+	\pagebreak
+
+	\section{Activity \#2}
+		%Shunting Yard Algorithm
+		\subsection{Introduction}
+			In this activity, you will be implementing a method for processing and evaluating expressions in infix notation. Remember, for the purposes of this lab, we are only considering the four basic operators ($+, -, \times, \div$) and no parenthesis or brackets. Even so, infix notation has proven so challenging for computers to process that it is normally converted to either prefix or postfix notation first, then processed using evaluation methods for the given notation.
+
+		\subsection{The Shunting-Yard Algorithm}
+			In addition to encouraging the use of postfix notation, Edsger Dijkstra also invented an algorithm for converting from infix notation to postfix notation. Here is a simplified version of that algorithm, in order to handle only the operators selected for this exercise. Note that the term \emph{token} is used to represent a small part of the expression being processed which could be either an operator or operand.
+			\begin{enumerate}
+				\item Create a postfix string and operator stack.
+				\item While there are tokens to read:
+				\begin{enumerate}
+					\item Read the next token.
+					\item If the token is a number, append it to the postfix string.
+					\item If the token is an operator:
+					\begin{enumerate}
+						\item While there is an operator on top of the operator stack:
+							\begin{enumerate}
+								\item If the current token has \emph{less} precedence than the operator on top of the stack, pop the operator off the stack and append it to the postfix string.
+							\end{enumerate}
+						\item Push the token on top of the operator stack.
+					\end{enumerate}
+				\end{enumerate}
+				\item Return the postfix string.
+			\end{enumerate}
+			This algorithm was named the ``shunting-yard algorithm'' due to the way the algorithm rearranges symbols in a similar fashion to how a shunting-yard might rearrange rail cars.
+		\subsection{Exercises}
+			\begin{enumerate}
+				\item Implement the \code{infix2postfix()} method, which will take as a parameter a \code{String} in infix notation and return a \code{String} in postfix notation.\\
+				{\small\textbf{Hint:} Use the shunting-yard algorithm!}
+				\item Implement the \code{evalInfix()} method, which will take as a parameter a \code{String} holding a mathematical expression in infix notation and return the result of evaluating that expression.
+			\end{enumerate}
+		\subsection{Questions}
+			\QBox{Why do you think Dijkstra offered an algorithm from converting from infix to postfix notation after advocating for postfix notation's use in computing?}{4cm}
+
+			\pagebreak
+
+			\QBlankBox{Explain how you might evaluate an expression in infix notation without first converting it to postfix notation. Do you believe the conversion process is more or less costly than the method you developed? Explain why.}
+
+	\pagebreak
+
+	\section{Final Analysis}
+		\QBox{Why is it important for computer scientists and programmers to consider methods for expressing information that differs from the way humans might express it?}{4cm}
+		\ \\[9pt]
+		\QBox{During the late 1960's, Hewlett Packard began designing and producing lines of engineering and financial calculators that used postfix notation. Even today, Hewlett Packard offers a (diminished) line of calculators using postfix notation. Why do you think Hewlett Packard continues to produce a few models using this notation? Why do you think few other calculators are produced using postfix notation?}{4cm}
+		\ \\[9pt]
+		\QBox{What part of the implementation of \code{evalPostfix()}, \code{evalPrefix()}, or \code{evalInfix()} did you find most challenging? How did you overcome this challenge?}{4cm}
+		\ \\[9pt]
+		\QBox{What new programming techniques or knowledge did you learn as a result of this lab?}{4cm}
+
+	\pagebreak
+	\blankpage
+	\pagebreak
+
+	\section{Template Class \& Test Cases}
+		\lstinputlisting[basicstyle=\small\ttfamily,tabsize=2]{files/Calculator.java}
+\end{document}
