@@ -124,7 +124,7 @@
 		\end{enumerate}
 		These requirements can be summed up in the following way: a Binary Search Tree is a binary tree in which every node on the left subtree of a given node is \emph{less than} that node and every node on the right subtree is \emph{greater than} that node.\\[\baselineskip]
 		It is important to node that any given set of data does not have a unique representation within a binary search tree. In fact, all three examples given above are examples of binary search trees holding the same set of data (\{1, 2, 4, 5, 6, 8, 9\}). It may benefit your understanding to take a moment and verify for yourself that each of the given trees meets all requirements of a binary search tree. Despite the fact that each tree holds the same data, binary search trees are not all created equal. In fact, the ``ideal'' binary search tree is the left-most one. This tree is called a \emph{balanced tree} due to its symmetric nature and that all nodes which can have two children from the set do.\\[\baselineskip]
-		Remarkably, each of the following operations: \emph{search}, \emph{insert}, \emph{delete} in a binary search tree has an average time complexity of $O(\lg n)$, with a worst-case time complexity of $O(n)$. The reasons for this will be explored more in this lab's activities.
+		Remarkably, each of the following operations: \emph{search}, \emph{insert}, and \emph{delete} in a binary search tree has an average time complexity of $O(\lg n)$, with a worst-case time complexity of $O(n)$. The reasons for this will be explored more in this lab's activities.
 
 	\pagebreak
 
@@ -186,9 +186,9 @@
 
 		\pagebreak
 
-		\QBox{Explain why the minimum ``height'' of a binary search tree holding $n$ elements is: $\ceil{\lg n}$. How does this help to explain why the average-case time complexity for searching $O(\lg n)$?}{6cm}
+		\QBox{Explain why the minimum ``height'' of a binary search tree holding $n$ elements is: $\ceil{\lg n}$. How does this help to explain why the average-case time complexity for searching is $O(\lg n)$?}{6cm}
 		\ \\[9pt]
-		\QBox{The requirement that all data is ``sortable'' for a binary search tree might seem prohibitive, it is not that as difficult to meet the requirement. For complex data structures, one element can be designated the \emph{key}. Keys can then be searched through in order to find the appropriate data. One possible application is to implement a \emph{Dictionary} data structure, wherein each piece of data can be assigned a keyword. Data can then be accesed via that keyword rather than through more traditional means, such as the index of an array or \code{ArrayList}. Describe at least one application for this kind of data structure.}{10cm}
+		\QBox{Although the requirement that all data is ``sortable'' for a binary search tree might seem prohibitive, it is not difficult to meet. For complex data structures, one element can be designated the \emph{key}. Keys can then be searched through in order to find the appropriate data. One possible application is the implementation of a \emph{Dictionary} data structure, wherein each piece of data can be assigned a keyword. Data can then be accesed via that keyword rather than through more traditional means, such as the index of an array or \code{ArrayList}. Describe at least one application for this kind of data structure.}{10cm}
 	\pagebreak
 
 	\section{Activity \#1}
