@@ -1,0 +1,502 @@
+\input{includes/lab_preamble}
+\usepackage{pst-tree}
+\usepackage{auto-pst-pdf} %use pdflatex --shell-escpae
+
+\def\LabCourse{AP Computer Science A}
+\def\LabNumber{08}
+\def\LabTitle{Binary Search Tree Lab}
+
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+
+\newcommand\QFilledBox[2]{
+\stepcounter{QuestionCounter}
+	\colorbox{black!10}{\parbox{0.9875\textwidth}{
+	  \raggedright
+	  \textbf{Question \#\theQuestionCounter:} #1
+	}}
+
+	\colorbox{black!5}{\parbox{0.9875\textwidth}{
+		\raggedright
+		#2
+	}}
+}
+
+\begin{document}
+	\begin{coverpages}
+		\ \\[2cm]
+		\begin{center}
+			\huge
+			\textbf{\LabTitle}
+
+			\Large
+			\LabCourse
+		\end{center}
+
+		\vspace{1.5cm}
+
+		\begin{center}
+			\includegraphics[scale=0.45]{graphics/logo_black}
+
+			\vspace{2.5cm}
+
+			\Large
+			Name: \rule{11.5cm}{0.1pt}
+		\end{center}
+	\end{coverpages}
+
+	\blankpage
+
+	\thispagestyle{empty}
+	\tableofcontents
+
+	\pagebreak
+
+	\section{Background}
+		A \emph{Binary Search Tree} is a special type of data structure designed to provide a method for storing and retrieving data with logarithmic average time complexity (linear worst case). Understanding what a binary search tree is and how it works requires us to understand a number of important concepts about data structures. Throughout the description of a binary search tree, refer to the following example diagrams.\\[\baselineskip]
+		\EBox{Sample Binary Search Tree}{
+			\begin{center}
+				\begin{tabular}{p{0.3\textwidth} p{0.3\textwidth} p{0.3\textwidth}}
+					\begin{center}
+						\scalebox{0.7}{\parbox{\textwidth}{
+							\psset{arrows=->,arrowsize=2pt 5}
+							\pstree[radius=3pt]{\Tcircle{5}}{
+								\pstree[radius=3pt]{\Tcircle{2}}{
+									\Tcircle{1}
+									\Tcircle{4}
+								}
+								\pstree[radius=3pt]{\Tcircle{8}}{
+									\Tcircle{6}
+									\Tcircle{9}
+								}
+							}
+						}}
+					\end{center}
+				&
+					\begin{center}
+						\scalebox{0.7}{\parbox{\textwidth}{
+							\psset{arrows=->,arrowsize=2pt 5}
+							\pstree[radius=3pt]{\Tcircle{6}}{
+								\pstree[radius=3pt]{\Tcircle{4}}{
+									\pstree[radius=3pt]{\Tcircle{2}}{
+										\Tcircle{1}
+										\Tn{}
+									}
+									\Tcircle{5}
+								}
+								\pstree[radius=3pt]{\Tcircle{8}}{
+									\Tn{}
+									\Tcircle{9}
+								}
+							}
+						}}
+					\end{center}
+				&
+					\begin{center}
+						\scalebox{0.7}{\parbox{\textwidth}{
+							\psset{arrows=->,arrowsize=2pt 5}
+							\pstree[radius=3pt]{\Tcircle{8}}{
+								\pstree[radius=3pt]{\Tcircle{5}}{
+									\pstree[radius=3pt]{\Tcircle{4}}{
+										\pstree[radius=3pt]{\Tcircle{2}}{
+											\Tcircle{1}
+											\Tn{}
+										}
+										\Tn{}
+									}
+									\Tn{}
+								}
+								\Tcircle{9}
+							}
+						}}
+					\end{center}
+				\end{tabular}
+			\end{center}
+		}
+		\ \\[9pt]
+		Each of the examples above represent the same set of numbers in a \emph{tree} data structure, so called because of the ``branching'' nature of its organization. More specifically, it is a \emph{binary tree} because each \emph{node} has a maximum of two child nodes linked to it. Continuing with the botanical terminology, the intial node (nodes labeled \code{5}, \code{6}, and \code{8} respectively in each of the above examples) is called the \emph{root node} of the tree and final nodes, i.e., those with no child nodes, are called the \emph{leaf nodes} of each tree. Additionally any portion of the tree which uses any given node as its root is called a \emph{subtree} of the that tree.\\[\baselineskip]
+		In addition to the above definitions, in order for a binary tree to be a \emph{Binary Search Tree}, it must adhere to each of the following requirements:
+		\begin{enumerate}
+			\item All nodes contain data which can be compared and sorted in some way.
+			\item Every node must either be a leaf or the root of a subtree that is also a binary search tree.
+			\item Every node that is a left child of a given node must have data that is comparably \emph{less than} the given node.
+			\item Every node that is a right child of a given node must have data that is comparably \emph{greater than} the given node.
+			\item No node can contain data comparably equal to any other node.
+		\end{enumerate}
+		These requirements can be summed up in the following way: a Binary Search Tree is a binary tree in which every node on the left subtree of a given node is \emph{less than} that node and every node on the right subtree is \emph{greater than} that node.\\[\baselineskip]
+		It is important to node that any given set of data does not have a unique representation within a binary search tree. In fact, all three examples given above are examples of binary search trees holding the same set of data (\{1, 2, 4, 5, 6, 8, 9\}). It may benefit your understanding to take a moment and verify for yourself that each of the given trees meets all requirements of a binary search tree. Despite the fact that each tree holds the same data, binary search trees are not all created equal. In fact, the ``ideal'' binary search tree is the left-most one. This tree is called a \emph{balanced tree} due to its symmetric nature and that all nodes which can have two children from the set do.\\[\baselineskip]
+		Remarkably, each of the following operations: \emph{search}, \emph{insert}, \emph{delete} in a binary search tree has an average time complexity of $O(\lg n)$, with a worst-case time complexity of $O(n)$. The reasons for this will be explored more in this lab's activities.
+
+	\pagebreak
+
+	\section{Applications}
+		\QFilledBox{For each of the following, explain why it is not a binary search tree.}{
+			\begin{center}
+				\begin{tabular}{p{0.33\textwidth} p{0.33\textwidth} p{0.33\textwidth}}
+						(A)
+
+						\scalebox{0.7}{\parbox{\textwidth}{
+							\psset{arrows=->,arrowsize=2pt 5}
+							\pstree[radius=3pt]{\Tcircle{5}}{
+								\pstree[radius=3pt]{\Tcircle{4}}{
+									\Tcircle{2}
+									\Tcircle{6}
+								}
+								\pstree[radius=3pt]{\Tcircle{8}}{
+									\Tcircle{7}
+									\Tcircle{9}
+								}
+							}
+						}}
+					&
+						(B)
+
+						\scalebox{0.7}{\parbox{\textwidth}{
+							\psset{arrows=->,arrowsize=2pt 5}
+							\pstree[radius=3pt]{\Tcircle{7}}{
+								\pstree[radius=3pt]{\Tcircle{5}}{
+									\Tcircle{2}
+									\Tcircle{6}
+								}
+								\pstree[radius=3pt]{\Tcircle{9}}{
+									\Tcircle{7}
+									\Tn{}
+								}
+							}
+						}}
+					&
+						(C)
+
+						\scalebox{0.7}{\parbox{\textwidth}{
+							\psset{arrows=->,arrowsize=2pt 5}
+							\pstree[radius=3pt]{\Tcircle{5}}{
+								\pstree[radius=3pt]{\Tcircle{3}}{
+									\Tcircle{2}
+									\Tcircle{4}
+								}
+								\Tcircle{6}
+								\Tcircle{8}
+							}
+						}}
+				\end{tabular}
+			\end{center}
+			\ \\[5.5cm]
+		}
+		\ \\[9pt]
+		\QBox{Draw a binary search tree for the following set of data: \{5, 10, 2, 7, 11, 12, 4, 3, 1\}. Describe the steps you took in this process.}{11.5cm}
+
+		\pagebreak
+
+		\QBox{Explain why the minimum ``height'' of a binary search tree holding $n$ elements is: $\ceil{\lg n}$. How does this help to explain why the average-case time complexity for searching $O(\lg n)$?}{6cm}
+		\ \\[9pt]
+		\QBox{The requirement that all data is ``sortable'' for a binary search tree might seem prohibitive, it is not that as difficult to meet the requirement. For complex data structures, one element can be designated the \emph{key}. Keys can then be searched through in order to find the appropriate data. One possible application is to implement a \emph{Dictionary} data structure, wherein each piece of data can be assigned a keyword. Data can then be accesed via that keyword rather than through more traditional means, such as the index of an array or \code{ArrayList}. Describe at least one application for this kind of data structure.}{10cm}
+	\pagebreak
+
+	\section{Activity \#1}
+		\subsection{Introduction}
+			One additional benefit of a Binary Search Tree is that, as long as its requirements are continuously met, the act of inserting an element into the binary search tree automatically places the data in sorted order. Because inserting into a binary search tree correctly is of pinnacle importance, it is also the first method you will implement as part of this lab. To assist you, consider the following examples of inserting into a binary search tree. We will begin with this tree:
+
+			\begin{center}
+				\psset{arrows=->,arrowsize=2pt 5}
+				\pstree[radius=3pt]{\Tcircle{7}}{
+					\pstree[radius=3pt]{\Tcircle{4}}{
+						\Tcircle{1}
+						\Tcircle{5}
+					}
+					\pstree[radius=3pt]{\Tcircle{12}}{
+						\Tcircle{10}
+						\Tn{}
+					}
+				}
+			\end{center}
+
+			Now let's assume we want to insert a node containing \code{6}. The first step is to ``walk'' along the edges from node-to-node until the correct location is found.
+
+			\begin{center}
+				\psset{arrows=->,arrowsize=2pt 5}
+				\pstree[radius=3pt]{\Tcircle[name=A]{7}}{
+					\pstree[radius=3pt]{\Tcircle[name=B]{4}}{
+						\Tcircle{1}
+						\pstree[radius=3pt]{\Tcircle[name=C]{5}}{
+							\Tn{}
+							\Tcircle[name=D,linestyle=dashed]{\quad}
+						}
+					}
+					\pstree[radius=3pt]{\Tcircle{12}}{
+						\Tcircle{10}
+						\Tn{}
+					}
+					\ncarc[arcangle=-8,linecolor=blue,nodesep=5pt,offset=-5pt]{->}{A}{B}
+					\ncarc[nodesep=5pt,linecolor=blue,offset=5pt]{->}{B}{C}
+					\ncarc[nodesep=5pt,linecolor=blue,offset=5pt]{->}{C}{D}
+				}
+			\end{center}
+
+			Inserting the \code{6} simply means adding the node as, in this case, the \emph{right child} of the \code{5} node. Now, where would a node containing \code{11} go? Think about what decisions you need to make in order to find the correct location, then attempt the following exercises.
+
+		\subsection{Exercises}
+			\begin{enumerate}
+				\item Implement the \code{insert()} method of the \code{BinarySearchTree} class which will accept an element of type \code{E} and insert the element appropriately.
+				\item Overload the \code{BinarySearchTree} constructor to accept any \code{List} and add all of its elements to the \code{BinarySearchTree}.\\
+				{\small\textbf{Note:} For this exercise, you may assume the first element of the list will act as the root of the \code{BinarySearchTree}.}
+				\item Implement the \code{search()} method which will accept an element of type \code{E} and return \code{true} if it exists in the \code{BinarySearchTree} and \code{false} otherwise.
+			\end{enumerate}
+
+		\pagebreak
+
+		\subsection{Questions}
+			\QBox{``Traversing'' a binary search tree is the process of move through the appropriate links from one node to the next appropriate node. Explain how you traversed the given binary search tree for both \code{insert()} and \code{search()}.}{6cm}
+			\ \\[9pt]
+			\QBox{Due to the nature of a binary search tree, it is often hard to generate a proper visualisation of the created data structure. The test cases use a combination of collapsing the binary search tree to an in-order list and verifying the expected height of the tree as its method for testing whether or not \code{insert()} works appropriately. Is this a valid approach? Explain why or why not.}{6cm}
+
+	\pagebreak
+
+	\section{Activity \#2}
+		\subsection{Introduction}
+			Deleting information from a binary search tree can be accomplished by considering each of the following cases. In each of the cases, we will be working with the following example binary search tree.
+			\begin{center}
+				\scalebox{0.6}{\parbox{\textwidth}{
+					\begin{center}
+						\psset{arrows=->,arrowsize=2pt 5}
+						\pstree{\Tcircle{10}}{
+							\pstree{\Tcircle{6}}{
+								\Tcircle{2}
+								\Tn{}
+							}
+							\pstree{\Tcircle{20}}{
+								\Tcircle{13}
+								\Tcircle{22}
+							}
+						}
+					\end{center}
+				}}
+			\end{center}
+
+			\subsubsection*{Case \#1: Deleting a Leaf}
+				The simplest case for deleting a node in a binary search tree is the removal of a leaf node. In this particular case, all that needs to occur is the removal of the link linking the given node to its parent. Consider deleting the \code{13} node from the tree above.\\[\baselineskip]
+				\begin{minipage}{0.33\textwidth}
+					\begin{center}
+						\textbf{\footnotesize Step 1: Find the node to delete.}\\[4.5pt]
+						\scalebox{0.6}{\parbox{\textwidth}{
+							\begin{center}
+								\psset{arrows=->,arrowsize=2pt 5}
+								\pstree{\Tcircle[name=A]{10}}{
+									\pstree{\Tcircle{6}}{
+										\Tcircle{2}
+										\Tn{}
+									}
+									\pstree{\Tcircle[name=B]{20}}{
+										\Tcircle[name=C]{13}
+										\Tcircle{22}
+									}
+									\ncarc[arcangle=8,linecolor=blue,nodesep=5pt,offset=5pt]{->}{A}{B}
+									\ncarc[arcangle=-8,nodesep=5pt,linecolor=blue,linestyle=dashed,offset=-5pt]{->}{B}{C}
+								}
+							\end{center}
+						}}
+					\end{center}
+				\end{minipage}
+				\begin{minipage}{0.33\textwidth}
+					\begin{center}
+						\textbf{\footnotesize Step 2: Delink the node from its parent.}\\[4.5pt]
+						\def\rdashed{\ncline[linecolor=black!25,linestyle=dashed]}
+						\scalebox{0.6}{\parbox{\textwidth}{
+							\begin{center}
+								\psset{arrows=->,arrowsize=2pt 5}
+								\pstree{\Tcircle{10}}{
+									\pstree{\Tcircle{6}}{
+										\Tcircle{2}
+										\Tn{}
+									}
+									\pstree{\Tcircle{20}}{
+										\Tcircle[linecolor=black!25,linestyle=dashed,edge=\rdashed]{\color{black!25}{13}}
+										\Tcircle{22}
+									}
+								}
+							\end{center}
+						}}
+					\end{center}
+				\end{minipage}
+				\begin{minipage}{0.33\textwidth}
+					\begin{center}
+						\textbf{\footnotesize Result: The node has been removed.}\\[4.5pt]
+						\scalebox{0.6}{\parbox{\textwidth}{
+							\begin{center}
+								\psset{arrows=->,arrowsize=2pt 5}
+								\pstree{\Tcircle{10}}{
+									\pstree{\Tcircle{6}}{
+										\Tcircle{2}
+										\Tn{}
+									}
+									\pstree{\Tcircle{20}}{
+										\Tn{}
+										\Tcircle{22}
+									}
+								}
+							\end{center}
+						}}
+					\end{center}
+				\end{minipage}
+
+			\subsubsection*{Case \#2: Deleting a Node with One Child}
+				Deleting a node with only one child does not pose too much additional difficulty. To handle this case, the node to be deleted can simply be replaced by its sole child. Consider deleting node \code{6}.\\[\baselineskip]
+				\begin{minipage}{0.33\textwidth}
+					\begin{center}
+						\textbf{\footnotesize Step 1: Find the node to delete.}\\[4.5pt]
+						\scalebox{0.6}{\parbox{\textwidth}{
+							\begin{center}
+								\psset{arrows=->,arrowsize=2pt 5}
+								\pstree{\Tcircle[name=A]{10}}{
+									\pstree{\Tcircle[name=B]{6}}{
+										\Tcircle{2}
+										\Tn{}
+									}
+									\pstree{\Tcircle{20}}{
+										\Tcircle{13}
+										\Tcircle{22}
+									}
+									\ncarc[arcangle=-8,linecolor=blue,nodesep=5pt,offset=-5pt]{->}{A}{B}
+								}
+							\end{center}
+						}}
+					\end{center}
+				\end{minipage}
+				\begin{minipage}{0.33\textwidth}
+					\begin{center}
+						\textbf{\footnotesize Step 2: Replace the node with its child node.}\\[4.5pt]
+						\def\rdashed{\ncline[linecolor=black!25,linestyle=dashed]}
+						\scalebox{0.6}{\parbox{\textwidth}{
+							\begin{center}
+								\psset{arrows=->,arrowsize=2pt 5}
+								\pstree{\Tcircle{10}}{
+									\pstree{\Tcircle[name=A,linestyle=dashed,linecolor=black!25]{\color{black!25}{6}}}{
+										\Tcircle[name=B,edge=\rdashed]{2}
+										\Tn{}
+									}
+									\pstree{\Tcircle{20}}{
+										\Tcircle{13}
+										\Tcircle{22}
+									}
+									\ncarc[linecolor=red,nodesep=5pt,offset=5pt]{->}{B}{A}
+								}
+							\end{center}
+						}}
+					\end{center}
+				\end{minipage}
+				\begin{minipage}{0.33\textwidth}
+					\begin{center}
+						\textbf{\footnotesize Result: The node has been removed.}\\[4.5pt]
+						\scalebox{0.6}{\parbox{\textwidth}{
+							\begin{center}
+								\psset{arrows=->,arrowsize=2pt 5}
+								\pstree{\Tcircle{10}}{
+									\Tcircle{2}
+									\pstree{\Tcircle{20}}{
+										\Tcircle{13}
+										\Tcircle{22}
+									}
+								}
+							\end{center}
+						}}
+					\end{center}
+				\end{minipage}
+
+			\subsubsection*{Case \#3: Deleting a Node with Two Children}
+				Deleting a node with two children represents the most challenging case for a binary search tree. In this situation, the node needs to be replaced with the \emph{largest} node in the \emph{left} subtree of the node or the \emph{smallest} node in the \emph{right} subtree. Consider deleting the root node, \code{10}, from the above example.\\[\baselineskip]
+				\begin{minipage}{0.33\textwidth}
+					\begin{center}
+						\textbf{\footnotesize Step 1: Find the node to delete.}\\[4.5pt]
+						\scalebox{0.7}{\parbox{\textwidth}{
+							\begin{center}
+								\psset{arrows=->,arrowsize=2pt 5}
+								\pstree{\Tcircle[linecolor=blue]{\color{blue}{10}}}{
+									\pstree{\Tcircle{6}}{
+										\Tcircle{2}
+										\Tn{}
+									}
+									\pstree{\Tcircle{20}}{
+										\Tcircle{13}
+										\Tcircle{22}
+									}
+								}
+							\end{center}
+						}}
+					\end{center}
+				\end{minipage}
+				\begin{minipage}{0.33\textwidth}
+					\begin{center}
+						\textbf{\footnotesize Step 2: Replace with the correct child node.}\\[4.5pt]
+						\scalebox{0.7}{\parbox{\textwidth}{
+							\begin{center}
+								\def\rdashed{\ncline[linecolor=black!25,linestyle=dashed]}
+								\psset{arrows=->,arrowsize=2pt 5}
+								\pstree{\Tcircle[name=A,linestyle=dashed,linecolor=black!25]{\color{black!25}{10}}}{
+									\pstree{\Tcircle{6}}{
+										\Tcircle{2}
+										\Tn{}
+									}
+									\pstree{\Tcircle[name=B]{20}}{
+										\Tcircle[name=C,edge=\rdashed]{13}
+										\Tcircle{22}
+									}
+									\ncarc[linecolor=blue,nodesep=5pt,offset=5pt]{->}{A}{B}
+									\ncarc[linecolor=blue,nodesep=5pt,offset=5pt]{->}{B}{C}
+									\ncarc[arcangle=16,linecolor=red,nodesep=5pt]{->}{C}{A}
+								}
+							\end{center}
+						}}
+					\end{center}
+				\end{minipage}
+				\begin{minipage}{0.33\textwidth}
+					\begin{center}
+						\textbf{\footnotesize Result: The node has been removed.}\\[4.5pt]
+						\scalebox{0.7}{\parbox{\textwidth}{
+							\begin{center}
+								\psset{arrows=->,arrowsize=2pt 5}
+								\pstree{\Tcircle{13}}{
+									\pstree{\Tcircle{6}}{
+										\Tcircle{2}
+										\Tn{}
+									}
+									\pstree{\Tcircle{20}}{
+										\Tn{}
+										\Tcircle{22}
+									}
+								}
+							\end{center}
+						}}
+					\end{center}
+				\end{minipage}
+
+		\pagebreak
+
+		\subsection{Exercises}
+			\begin{enumerate}
+				\item Implement the \code{delete()} method to handle all three cases described in the introduction to this activity. This method should take as a parameter the node element to remove from the binary search tree.\\
+				{\small\textbf{Note:} You will need to take some special steps if the node to be deleted is the root node. Consider how the \code{BinarySearchTree} class is designed.}
+				\item It should be clear that a number of calls to \code{insert()} and \code{delete()} on a given binary search tree could quickly create an unbalanced tree. Implement the \code{rebalance()} method. This method should use the current binary search tree's nodes and ``rebalance'' them so that the tree is as efficient as possible.\\
+				{\small\textbf{Hint:} You might want to use the \code{collapse()} helper method provided for you as part of the \code{BinarySearchTree} template class.}
+			\end{enumerate}
+		%Rebalance
+		\subsection{Questions}
+			\QBox{Explain how the procedure outlined for Case \#3 for deleting a node maintain each of the properties of a binary search tree.}{6cm}
+			\ \\[9pt]
+			\QBox{Rebalancing a binary search tree, particularly for large trees, can provide a significant performance boost for the searching through the tree. Nevertheless, rebalancing after every tree operation adds a significant amount of overhead, potentially negating the benefits drawn from it. Under what circumstances would you run the \code{rebalance()} method you created?}{6cm}
+	\pagebreak
+
+	\section{Final Analysis}
+		\QBox{How would you modify the binary search tree data structure to allow for data that is comparably \emph{equal to} a node already in the structure? What use would such a structure have?}{4cm}
+		\ \\[9pt]
+		\QBox{Why is the \emph{worst-case} for the \code{insert()}, \code{search()} and \code{delete()} methods for an $n$-element binary search tree $O(n)$? Sketch how a worst-case scenario binary search tree might look.}{4cm}
+		\ \\[9pt]
+		\QBox{What part of the implementation of \code{insert()}, \code{search()}, or \code{delete()} did you find most challenging? How did you overcome this challenge?}{4cm}
+		\ \\[9pt]
+		\QBox{What new programming techniques or knowledge did you learn as a result of this lab?}{4cm}
+
+
+	\pagebreak
+	\blankpage
+	\pagebreak
+
+	\section{Template Class \& Test Cases}
+		\lstinputlisting[basicstyle=\small\ttfamily,tabsize=2,breaklines=true,postbreak=\hbox{$\color{blue}{\hookrightarrow}$\space}]{files/BinarySearchTree.java}
+\end{document}
