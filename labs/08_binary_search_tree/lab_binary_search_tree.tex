@@ -244,7 +244,7 @@
 		\pagebreak
 
 		\subsection{Questions}
-			\QBox{``Traversing'' a binary search tree is the process of move through the appropriate links from one node to the next appropriate node. Explain how you traversed the given binary search tree for both \code{insert()} and \code{search()}.}{6cm}
+			\QBox{``Traversing'' a binary search tree is the process of moving through the appropriate links from one node to the next appropriate node. Explain how you traversed the given binary search tree for both \code{insert()} and \code{search()}.}{6cm}
 			\ \\[9pt]
 			\QBox{Due to the nature of a binary search tree, it is often hard to generate a proper visualisation of the created data structure. The test cases use a combination of collapsing the binary search tree to an in-order list and verifying the expected height of the tree as its method for testing whether or not \code{insert()} works appropriately. Is this a valid approach? Explain why or why not.}{6cm}
 
@@ -252,7 +252,7 @@
 
 	\section{Activity \#2}
 		\subsection{Introduction}
-			Deleting information from a binary search tree can be accomplished by considering each of the following cases. In each of the cases, we will be working with the following example binary search tree.
+			Deleting information from a binary search tree can be accomplished by considering each of the following cases. In each case, we will be working with the following example binary search tree.
 			\begin{center}
 				\scalebox{0.6}{\parbox{\textwidth}{
 					\begin{center}
@@ -272,7 +272,7 @@
 			\end{center}
 
 			\subsubsection*{Case \#1: Deleting a Leaf}
-				The simplest case for deleting a node in a binary search tree is the removal of a leaf node. In this particular case, all that needs to occur is the removal of the link linking the given node to its parent. Consider deleting the \code{13} node from the tree above.\\[\baselineskip]
+				The simplest case for deleting a node in a binary search tree is the removal of a leaf node. In this particular case, all that needs to occur is the removal of the link from the parent to the given node. Consider deleting the \code{13} node from the tree above.\\[\baselineskip]
 				\begin{minipage}{0.33\textwidth}
 					\begin{center}
 						\textbf{\footnotesize Step 1: Find the node to delete.}\\[4.5pt]
@@ -478,7 +478,7 @@
 			\end{enumerate}
 		%Rebalance
 		\subsection{Questions}
-			\QBox{Explain how the procedure outlined for Case \#3 for deleting a node maintain each of the properties of a binary search tree.}{6cm}
+			\QBox{Explain how the procedure outlined for Case \#3 for deleting a node maintains each of the properties of a binary search tree.}{6cm}
 			\ \\[9pt]
 			\QBox{Rebalancing a binary search tree, particularly for large trees, can provide a significant performance boost for the searching through the tree. Nevertheless, rebalancing after every tree operation adds a significant amount of overhead, potentially negating the benefits drawn from it. Under what circumstances would you run the \code{rebalance()} method you created?}{6cm}
 	\pagebreak
