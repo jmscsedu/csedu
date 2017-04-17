@@ -143,28 +143,24 @@ public class BinarySearchTree<E extends Comparable<E>> {
    *          in sorted order.
    */
   public ArrayList<E> collapse() {
-    return collapseHelper(root);
+    ArrayList<E> nodes = new ArrayList<E>();
+    collapseHelper(root, nodes);
+    return nodes;
   }
 
   /**
-   * The recursive helper method for the collapse() method above. Note that
-   * because each recursion creates a new ArrayList, this is a highly
-   * memory-inefficient way of creating the compiled list of elements; however,
-   * because of the nature of the binary search trees created for this lab,
-   * this method is the clearest to understand and so will remain in its
-   * inefficient form.
+   * The recursive helper method for the collapse() method above.
    *
    * @param current The current root node of the subtree being traversed.
-   * @return  An ArrayList containing all elements of the subtree in sorted order.
+   * @param nodes The ArrayList holding the list of node data.
    */
-  private ArrayList<E> collapseHelper(Node<E> current) {
-    ArrayList<E> elements = new ArrayList<E>();
-    if (current.getLeft() != null)
-      elements.addAll(collapseHelper(current.getLeft()));
-    elements.add(current.getData());
-    if (current.getRight() != null)
-      elements.addAll(collapseHelper(current.getRight()));
-    return elements;
+  private void collapseHelper(Node<E> current, ArrayList<E> nodes) {
+    if (current == null)
+      return;
+
+    collapseHelper(current.getLeft(), nodes);
+    nodes.add(current.getData());
+    collapseHelper(current.getRight(), nodes);
   }
 
   /**
