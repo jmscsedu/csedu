@@ -1,0 +1,85 @@
+\input{includes/assignment_preamble}
+
+\def\AssignmentCourse{AP Computer Science A}
+\def\AssignmentNumber{07}
+\def\AssignmentTitle{Classes \& Objects}
+
+\begin{document}
+  \begin{questions}
+    \BlueQuestion{Explain why the following implemention is incorrect for a constructor of the \code{Car} class.}
+    \begin{lstlisting}
+      public Car {
+        private int nDoors;   // How many doors does the car have?
+        private Color color;  // What color is the car?
+
+        public void Car(int doors, Color color) {
+          nDoors = doors;
+          color = color;
+        }
+
+        /* Additional attributes and methods not shown. */
+      }
+    \end{lstlisting}
+
+    %Object Creation/Data Access
+    \BlueQuestion{What happens when the following method is run using the \code{Car} class from Question \#1. (You may assume all problems with the class constructor have been resolved.)}
+    \begin{lstlisting}
+      public static void main(String[] args) {
+        // Create a new red, four-door car.
+        Car car = new Car(4, Color.RED);
+
+        // Paint the car blue!
+        car.color = Color.BLUE;
+      }
+    \end{lstlisting}
+
+    \GreenQuestion{Java requires that all programming code be part of a class. Some other object-oriented programming languages, such as C++, allow for ``global'' variables and methods; that is, C++ allows for programming code to exist outside of container classes. In your own words, what might be some benefits/drawbacks to Java's approach?}
+
+    %Explanation of static vs. non-static methods (5 questions: Select `static` or `non-static`)
+    \GreenQuestion{For each of the following examples, indicate whether the described method or attribute should be \code{static} or non-\code{static}.}
+    \begin{enumerate}[label=\texttt{\alph*.}]
+      \item A method of the \code{Employee} class that increases an employee's salary by $10\%$.
+      \item An attribute of the \code{Cat} class that contains a cat's genus.
+      \item A method of the \code{Television} class that changes a TVs channel.
+      \item A method of the \code{Algebra} class that solves a given (i.e., as a parameter) polynomial equation.
+      \item An attribute of the \code{Person} class that contains a person's height.
+    \end{enumerate}
+
+    %Basic Application of Classes & Objects: Implementation from UML Diagram
+    \YellowQuestion{Implement the following class in Java. Ensure that the visibility of all attributes are \code{private} and all appropriate accessor methods are implemented.}
+    \begin{center}
+      \includegraphics[scale=0.75]{graphics/assignments/apcsa_07_AnimalUML}
+    \end{center}
+
+    \pagebreak
+    %Application of Classes & Objects: `Point`, `Line`, `Geometry`
+    \RedQuestion{Create the \code{Point}, \code{Line}, and \code{Geometry} classes with the following specifications.}
+
+    \code{Point}:
+    \begin{itemize}
+      \item Contains two attributes: \code{x} and \code{y} to represent the rectangular coordinates of the point.
+      \item Contains the appropriate constructor for a given set of coordinates.
+      \item Contains the method: \code{distanceTo(Point p)} that will calculate the distance to the passed point, \code{p}.
+    \end{itemize}
+
+    \code{Line}:
+    \begin{itemize}
+      \item Contains two attributes: \code{m} and \code{b} to represent the slope and y-intercept of the line.\\
+      {\small\textbf{Note:} \code{b} should be a \code{Point} object.}
+      \item Contains an overloaded constructor for each of the following possible set of given values:
+      \begin{itemize}
+        \item Slope, y-Intercept
+        \item Slope, Any point
+        \item Any two points
+      \end{itemize}
+      \item Contains the method: \code{contains(Point p)} that will return \code{true} if the line contains the point, \code{p}, and \code{false} otherwise.
+    \end{itemize}
+
+    \code{Geometry}:
+    \begin{itemize}
+      \item Contains the method: \code{distance(Point p1, Point p2)} that will return the distance between the two given points.
+      \item Contains the method: \code{midpoint(Point p1, Point p2)} that will return a \code{Point} that is the midpoint between the two given points.
+      \item Contains the method: \code{perpendicularLine(Line l, Point p)} that will return a \code{Line} that is perpendicular to \code{l} that passes through \code{p}.
+    \end{itemize}
+  \end{questions}
+\end{document}
