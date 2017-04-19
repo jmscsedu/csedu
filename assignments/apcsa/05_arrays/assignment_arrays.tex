@@ -1,0 +1,39 @@
+\input{includes/assignment_preamble}
+
+\def\AssignmentCourse{AP Computer Science A}
+\def\AssignmentNumber{05}
+\def\AssignmentTitle{Arrays}
+
+\begin{document}
+  \begin{questions}
+    \BlueQuestion{Describe and explain what happens when you try to compile a program with the following statements:}
+      \begin{lstlisting}
+        int N = 1000;
+        int[] a = new int[N*N*N*N];
+      \end{lstlisting}
+
+    \BlueQuestion{Consider the following, two-dimensional array of integers:}
+      \begin{center}
+        \code{int[] numbers = \{\{1, 2, 3\}, \{4, 5, 6\}, \{7, 8, 9\}\}}
+      \end{center}
+    What value is given by \code{numbers[1][2]}?
+
+    \GreenQuestion{Write the method, \code{reverse()}, that reverses the order of a one-dimensional array of integers.}
+
+    \GreenQuestion{Write the method, \code{scalarMult()}, that accepts a two-dimensional array of \code{doubles} and a \code{double} scalar and returns a two-dimensional array of the same dimensions in which each element is the original value multiplied by the given scalar.}
+
+    \YellowQuestion{\emph{Euclidean Distance.} The \emph{Euclidean Distance} between two points of arbitrary dimension, $(a_1, b_1, c_1, ...)$ and $(a_2, b_2, c_2, ...)$ is defined as:}
+      \[
+        d = \sqrt{(a_1 - a_2)^2 + (b_1 - b_2)^2 + (c_1 - c_2)^2 + \cdots}
+      \]
+    For example, the distance between points $(1, 4, 3, 2)$ and $(2, 6, 7, 8)$ can be computed as:
+      \[\begin{aligned}
+        d &= \sqrt{(1 - 2)^2 + (4 - 6)^2 + (3 - 7)^2 + (2 - 8)^2}\\
+          &= \sqrt{1 + 4 + 16 + 36}\\
+          &= \sqrt{57}\\
+          &\approx 7.5498
+      \end{aligned}\]
+
+    \RedQuestion{\emph{Longest Plateau.} Given an array of integers, find the length and location of the longest contiguous sequence of equal values where the values of the elements just before and just after the sequence are smaller.}
+  \end{questions}
+\end{document}
