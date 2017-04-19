@@ -1,0 +1,45 @@
+\input{includes/assignment_preamble}
+
+\def\AssignmentCourse{AP Computer Science A}
+\def\AssignmentNumber{06}
+\def\AssignmentTitle{Strings}
+
+\begin{document}
+  \begin{questions}
+    \BlueQuestion{What does the following code fragment print?}
+      \begin{lstlisting}
+        String string1 = "Hello";
+        String string2 = string1;
+        string1 = "World!";
+        System.out.println(string1);
+        System.out.println(string2);
+      \end{lstlisting}
+    \BlueQuestion{Write a brief explanation for the results in Question \#1.}
+    \GreenQuestion{Given a string \code{site} that represents a website, write a code fragment to determine its top-level domain (TLD). For example, the TLD for the string \code{"http://www.woodstockschool.in"} is: \code{in}.}
+    \GreenQuestion{A string, \code{s}, is a \emph{circular shift} of a string, \code{t}, if it matches when the characters are circularly shifted by any number of positions. For example, \code{ACTGACG} is a circular shift of \code{TGACGAC} and vice versa. Detecting this condition is important in the study of genomic sequences. Write a method that checks whether two given strings, \code{s} and \code{t}, are circular shifts of one another.}\\[4pt]{\small\textbf{Note:} This can be accomplished using a very simple technique involving string concatenation.}
+    \YellowQuestion{\emph{Password Strength Verification.} Write a static method that takes a single, \code{String} argument and returns \code{true} if it meets all of the following conditions and \code{false} otherwise.}
+      \begin{itemize}
+        \item The string is at least $8$ characters in length.
+        \item The string contains at least one numeric digit (0--9).
+        \item The string contains at least one upper-case letter.
+        \item The string contains at least one lower-case letter.
+      \end{itemize}
+    {\small\textbf{Hint:} There is a clever method for testing the last two requirements simultaneously.}
+    \RedQuestion{\emph{Kama Sutra Cipher.} The \emph{Kama Sutra} describes a fairly simple encryption technique (listed as the ``art of secret writing''). It requires a one-to-one pairing of letters. A message can then be encoding by replacing every letter with its pair.}\\[4pt]
+    {\small\textbf{Example:} Suppose that the following table of pairings were being used:
+      \begin{center}
+        \begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c |}
+          \hline
+          T & H & E & Q & U & I & C & K & B & R & O & W & N\\
+          \hline
+          F & X & J & M & P & S & V & L & A & Z & Y & D & G\\
+          \hline
+        \end{tabular}
+      \end{center}
+    Then, the message ``MEET AFTER SCHOOL'' would be encoded as: ``QJJF BTFJZ IVYYK''.
+
+    Often, the pairings will be recorded as a series of keywords which are then used to create the table of pairings. (In the above example, the two keywords are: ``THEQUICKBROWN'' and ``FXJMPSVLAZYDG''.)}
+
+    Create a method, \code{KamaSutra()}, that will take three, \code{String} parameters: the first parameter is the text to be encoded and the remaining two parameters are the two keywords for a Kama Sutra cipher and returns the encrypted text.
+  \end{questions}
+\end{document}
