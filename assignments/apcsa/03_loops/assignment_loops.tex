@@ -1,0 +1,23 @@
+\input{includes/assignment_preamble}
+
+\def\AssignmentCourse{AP Computer Science A}
+\def\AssignmentNumber{00}
+\def\AssignmentTitle{Sample Assignment}
+
+\begin{document}
+  \begin{questions}
+    \BlueQuestion{Write a program that will use a \code{for} loop to print \code{Hello World!} ten times.}
+    \BlueQuestion{Write a program that will use a \code{while} loop to print \code{Hello World!} ten times.}
+    \GreenQuestion{Suppose that \code{i} and \code{j} are both of type \code{int}. What is the value of \code{j} after each of the following statements is executed?}
+      \begin{parts}
+        \part \code{for (i = 0, j = 0; i < 10; i++) j += i;}
+        \part \code{for (i = 0, j = 1; i < 10; i++) j += j;}
+        \part \code{for (j = 0; j < 10; j++) j += j;}
+        \part \code{for (i = 0, j = 0; i < 10; i++) j += j++;}
+        \part \code{for (i = 0, j = 5; i < 10; j--) i += j;}
+      \end{parts}
+    \GreenQuestion{Write a program that will roll a random die until a $6$ is rolled. Calculate and print the average number of rolls required over $1,000$ trials.}
+    \YellowQuestion{Write a program that, using one \code{for} loop and one \code{if} statement, prints the integers from $1,000$ to $2,000$ with five integers per line.}\\{\small\textbf{Hint:} Use the \code{\%} operator.}
+    \RedQuestion{\emph{Prime Numbers.} Write a program that will find and print the first $n$ prime numbers, where $n$ is any given value such that $0 \leq n \leq 1000$.}
+  \end{questions}
+\end{document}
