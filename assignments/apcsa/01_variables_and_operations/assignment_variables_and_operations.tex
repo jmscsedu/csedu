@@ -1,0 +1,57 @@
+\input{includes/assignment_preamble}
+
+\def\AssignmentCourse{AP Computer Science A}
+\def\AssignmentNumber{01}
+\def\AssignmentTitle{Variables \& Operations}
+
+\begin{document}
+  \begin{questions}
+    \BlueQuestion{Give the value of \code{a} after the execution of each of the following sequences.}
+      \begin{parts}
+        \part
+          \begin{lstlisting}
+            int a = 1;
+            a = a + a;
+            a = a + a;
+            a = a + a;
+          \end{lstlisting}
+
+        \part
+          \begin{lstlisting}
+            double a = 2;
+            a = a * a;
+            a = a * a;
+            a = a * a;
+          \end{lstlisting}
+
+        \part
+          \begin{lstlisting}[]
+            boolean a = true;
+            a = !a;
+            a = !a;
+            a = !a;
+          \end{lstlisting}
+      \end{parts}
+
+    \BlueQuestion{Why does \code{10 / 3} result in the value \code{3} instead of \code{3.33333333}? What modifications would you need to make to ensure the value \code{3.33333333}?}
+
+    \GreenQuestion{What do each of the following print?}
+      \begin{parts}
+        \part \code{System.out.println(2 + "bc");}
+        \part \code{System.out.println(2 + 3 + "bc");}
+        \part \code{System.out.println((2 + 3) + "bc");}
+        \part \code{System.out.println("bc" + (2 + 3));}
+        \part \code{System.out.println("bc" + 2 + 3);}
+      \end{parts}
+
+    \GreenQuestion{A physics student gets unexpected results when using the code:}
+      \begin{center}
+        \code{F = G * mass1 * mass2 / r * r;}
+      \end{center}
+    to compute values according to the formula $F = Gm_{1}m_{2}/r^{2}$. Explain the problem with the code and indicate how you would fix it.
+
+    \YellowQuestion{\emph{Rolling Dice.} Write a program that generates and prints two random integers between $1$ and $6$ (as if you were rolling dice).}\\[4pt]{\small\textbf{Hint:} You can use \code{Math.random()} to generate a random number. Experiment with its output before deciding how you can use it to restrict your values to the desired results.}
+
+    \RedQuestion{\emph{Loan Payments.} Write a program that calcualtes the monthly payments you would have to make over a given number of years to pay off a loan at a given interest rate, compounded continuously. Given the number of years, $t$, the principal, $P$, and the annual interest rate, $r$, the total amount paid at the end of a loan is given by the formula: $A = Pe^{rt}$.}\\[4pt]{\small\textbf{Hint:} Use \code{Math.exp(n)} to calculate $e^{n}$.}
+  \end{questions}
+\end{document}
