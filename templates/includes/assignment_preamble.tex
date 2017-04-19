@@ -1,0 +1,13 @@
+\input{includes/preamble}
+
+%Color-Coded questions
+\newcommand{\ColourQuestion}[3]{\renewcommand{\questionlabel}{\colorbox{#1}{\bfseries\color{white}\thequestion}\hfill}\question[#3] #2}
+\newcommand{\BlueQuestion}[1]{\ColourQuestion{RoyalBlue}{#1}{3}}
+\newcommand{\GreenQuestion}[1]{\ColourQuestion{ForestGreen}{#1}{5}}
+\newcommand{\YellowQuestion}[1]{\ColourQuestion{Goldenrod}{#1}{10}}
+\newcommand{\RedQuestion}[1]{\ColourQuestion{BrickRed}{#1}{20}}
+\newcommand{\PurpleQuestion}[1]{\ColourQuestion{RoyalPurple}{#1}{30}}
+\pointsinrightmargin
+
+\header{\footnotesize\scshape Assignment \#\AssignmentNumber: \AssignmentTitle}{}{}
+\cfoot{\footnotesize\scshape \AssignmentCourse\\Woodstock School---Mussoorie, Uttarakhand---India}

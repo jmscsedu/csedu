@@ -1,0 +1,30 @@
+\documentclass[10pt]{exam}
+\usepackage[T1]{fontenc}
+\usepackage[paper=a4paper,margin=2cm]{geometry}
+\usepackage[sfdefault,light]{roboto}
+
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{amsmath,amssymb,graphicx,enumitem,listings,lstautogobble,multicol,titlesec}
+\usepackage{mathtools}
+
+\setlength\parindent{0cm}
+
+%Title & Section Formatting
+\titleformat{\section}{\normalfont\Large\bfseries}{}{0em}{}[{\titlerule[0.5pt]}]
+\titleformat{\subsection}{\normalfont\large\bfseries}{}{0em}{}
+
+%Mathematical Shortcuts
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+
+%Listings Shortcuts & Settings
+\newcommand{\code}[1]{\lstinline{#1}}
+\lstset{language=Java,
+        autogobble=true,
+        basicstyle=\ttfamily,
+        commentstyle=\color{black!45},
+        keywordstyle=\bfseries,
+        showstringspaces=false}
+
+%General Shortcuts
+\newcommand{\blankpage}{\null\thispagestyle{empty}\addtocounter{pages}{-1}\newpage}
