@@ -1,0 +1,91 @@
+\input{includes/assignment_preamble}
+
+\def\AssignmentCourse{AP Computer Science A}
+\def\AssignmentNumber{08}
+\def\AssignmentTitle{Class Inheritance}
+
+\begin{document}
+  \begin{questions}
+    \BlueQuestion{Indicate whether each of the following statements is \code{true} or \code{false}.}
+    \begin{enumerate}[label=\texttt{\alph*.}]
+      \item The \code{super} keyword allows a class' methods to access attributes and methods of its super-class.
+      \item Subclasses can access the \code{private} attributes and methods of their their superclasses.
+      \item Subclass constructors must \emph{explicitly} call a superclass constructor if the superclass does not contain a constructor which takes no parameters.
+    \end{enumerate}
+
+    \BlueQuestion{Suppose \code{Employee} contains the \code{calculatePay()} method and that \code{Manager} is a subclass of \code{Employee} which overrides \code{calculatePay()}. Consider the following code fragment.}
+    \begin{lstlisting}
+      public void payIndividual(Employee emp) {
+        double pay = emp.calculatePay();
+        //  further implementation details not shown
+      }
+    \end{lstlisting}
+    If \code{manager1} is an instance of the \code{Manager} class, which copy of \code{calculatePay()} is evaluated when\\[0pt]
+    \code{payIndividual(manager1)} is called? Explain your reasoning.
+
+    \GreenQuestion{Suppose the \code{Pencil} class is a subclass of \code{WritingUtensil} which adds the \code{erase()} method and that \code{pencil1} is an instance of the \code{Pencil} class.} Consider the following code fragment.
+    \begin{lstlisting}
+      public void removeMistake(WritingUntensil unt) {
+        unt.erase();
+      }
+    \end{lstlisting}
+
+    Explain why the method call, \code{removeMistake(pencil1)} causes an error. How would you fix this error?
+
+    \GreenQuestion{For each pair of classes, indicate whether they should exhibit an ``is-a'' or ``has-a'' relationship. Write ``neither'' if neither relationship appears to work.}
+    \begin{enumerate}
+      \item \code{Cat}, \code{Animal}
+      \item \code{Zoo}, \code{Animal}
+      \item \code{Business}, \code{Employee}
+      \item \code{Cat}, \code{Dog}
+      \item \code{Manager}, \code{Employee}
+    \end{enumerate}
+
+    \YellowQuestion{Create classes representing an implementation of the following UML diagram.\\
+      {\small\textbf{Note:} Your methods do not need to represent actual working implementations for each class.}
+    }
+    \begin{center}
+      \includegraphics[scale=0.6]{graphics/assignments/apcsa_08_umlDiagram}
+    \end{center}
+
+    \pagebreak
+
+    \RedQuestion{Use the \code{Point}, \code{Line}, and \code{Geometry} classes implemented in the previous assignment to complete each of the following tasks.}
+
+    \begin{parts}
+        \part Create the \code{Polygon}, \code{Triangle}, and \code{Rectangle} classes with the following specifications.\\
+            \code{Polygon}
+            \begin{itemize}
+              \item Contains an attribute to hold a collection of points.
+              \item Contains the appropriate constructor for accepting a collection of points.
+              \item Contains the \code{calcPerimeter()} and \code{calcArea()} methods.\\
+              {\small\textbf{Note:} Due to the complexity of calculating areas of general polygons, the \code{calcArea()} method can return a default value of $-1$.}
+            \end{itemize}
+
+            \code{Triangle}
+            \begin{itemize}
+              \item A \code{Triangle} ``is-a'' \code{Polygon}.
+              \item Overrides the \code{Polygon} constructor in order to verify the correct number of points.
+              \item Overrides the \code{calcArea()} method. You can use Heron's Formula below:
+
+              \emph{Given a triangle with side lengths $a$, $b$, and $c$.}
+              \[\begin{aligned}
+                s &= \dfrac{a + b + c}{2}\\
+                A &= \sqrt{s(s - a)(s - b)(s - c)}
+              \end{aligned}\]
+            \end{itemize}
+
+            \code{Rectangle}
+            \begin{itemize}
+              \item A \code{Rectangle} ``is-a'' \code{Polygon}.
+              \item Overrides the \code{Polygon} constructor in order to verify the correct number of points.
+              \item Overrides the \code{calcArea()} method.
+            \end{itemize}
+
+      \part Implement a \code{Square} class.\\
+      {\small\textbf{Note:} The constructor of your \code{Square} class should verify the points are valid for a square.}
+
+      \part Draw a UML diagram of your entire system of classes.
+    \end{parts}
+  \end{questions}
+\end{document}
