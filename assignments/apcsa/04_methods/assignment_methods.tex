@@ -1,0 +1,36 @@
+\input{includes/assignment_preamble}
+
+\def\AssignmentCourse{AP Computer Science A}
+\def\AssignmentNumber{04}
+\def\AssignmentTitle{Methods}
+
+\begin{document}
+  \begin{questions}
+    \BlueQuestion{Write the static method \code{max3()} which takes three \code{int} values as arguments and returns the value of the larges one. Add an overloaded function that does the same thing for three \code{double} values.}
+
+    \BlueQuestion{Write the static method \code{printN()} which takes a \code{String} and an \code{int} parameter and prints the given string the given number of times.}
+
+    \GreenQuestion{Write the static method \code{odd()} which takes three \code{boolean} values as arguments and returns \code{true} if an odd number of inputs are \code{true} and \code{false} otherwise.}
+
+    \GreenQuestion{Write the static method \code{factorial()} which takes a single integer paramter, \code{n}, and returns $n!$. Note the following requirements.}
+      \begin{itemize}
+        \item $n!$ is undefined for $n < 0$
+        \item $0! = 1$
+        \item $n! = n(n - 1)(n - 2)\cdots(2)(1)$
+      \end{itemize}
+
+    \YellowQuestion{Write the static method \code{majority()} which takes three \code{boolean} values as arguments and returns \code{true} if at least two of the arguments have the value \code{true} and \code{false} otherwise. Do not use an \code{if} statement.}
+
+    \RedQuestion{\emph{Binomial Distribution.} Write a method to compute the probability of obtaining exactly $k$ heads in $N$ biased coin flips. Calculate the probability of $k$ heads in $N$ flips with probability $p$ using the formula:}
+      \[
+        f(N, k, p) = \dfrac{N!}{k!(N - k)!}p^{k}(1 - p)^{N - k}
+      \]
+    Ensure that your method tests for each of the following requirements for $N$, $k$, and $p$.
+      \begin{itemize}
+        \item $N \geq 0$, $k \geq 0$
+        \item $0 \leq p \leq 1$
+        \item if $k > N$, the probability is $0$
+      \end{itemize}
+    Invalid inputs should return the value \code{Double.NaN}.
+  \end{questions}
+\end{document}
