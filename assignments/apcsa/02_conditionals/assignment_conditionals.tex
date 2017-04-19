@@ -1,0 +1,64 @@
+\input{includes/assignment_preamble}
+
+\def\AssignmentCourse{AP Computer Science A}
+\def\AssignmentNumber{02}
+\def\AssignmentTitle{Conditionals}
+
+\begin{document}
+  \begin{questions}
+    \BlueQuestion{What (if anything) is wrong with each of the following statements?}
+      \begin{parts}
+        \part \code{if (a > b) then c = 0;}
+        \part \code{if a > b \{ c = 0; \}}
+        \part \code{if (a > b) c = 0;}
+      \end{parts}
+
+    \BlueQuestion{Write a program that will use \code{Math.random()} to simulate the flipping of a fair coin. Your program should print \code{Heads} or \code{Tails}.}
+
+    \GreenQuestion{What values for boolean variables, \code{X} and \code{Y}, will result in the following statement being true?}
+      \begin{center}
+        \code{!(X && Y) || !(X || Y)}
+      \end{center}
+    Explain your reasoning.
+
+    \GreenQuestion{Write the program, \code{Craps}, that will roll two $6$-sided dice and print the following:}
+      \begin{itemize}
+        \item \code{Snake Eyes} when two $1$'s are rolled,
+        \item \code{Seven} when the dice values total $7$,
+        \item \code{Boxcars} when two $6$'s are rolled,
+        \item \code{Hard Way} when any other pair is rolled.
+      \end{itemize}
+
+    \YellowQuestion{The \emph{exclusive}-or (\emph{XOR}) boolean operator evaluates to \code{true} if exactly one of two boolean expressions is \code{true} and \code{false} otherwise.}
+      \begin{parts}
+        \part Complete the following truth table for XOR operator ($\oplus$).
+          \begin{center}
+            \begin{tabular}{c | c | c }
+              $\mathbf{P}$ & $\mathbf{Q}$ & $\mathbf{P} \oplus \mathbf{Q}$ \\
+              \hline
+              $T$ & $T$ & \ \\
+              $T$ & $F$ & \ \\
+              $F$ & $T$ & \ \\
+              $F$ & $F$ & \ \\
+            \end{tabular}
+          \end{center}
+        \part Write a boolean expression that will satisfy the output of $\mathbf{P} \oplus \mathbf{Q}$ above using any combination of AND (\code{\&\&}), OR (\code{||}) and NOT (\code{!}) logical operators.
+      \end{parts}
+
+    \RedQuestion{\emph{The Quadratic Formula.} Write the program, \code{Quadratic}, that, when given $a$, $b$, and $c$, the coefficients of a quadratic function in the form $y = ax^2 + bx + c$, correctly prints the roots of the function. Be sure to consider the following:}
+      \begin{itemize}
+        \item The quadratic formula returns the roots of a given quadratic function. It is as follows:
+          \[
+            x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+          \]
+        {\small\textbf{Note:} The command \code{Math.sqrt(n)} will return the square root of the number, $n$.}
+
+        \item When $a$ is $0$, in order to avoid dividing by zero when using the quadratic formula, you should instead solve the equation:
+          \[
+            bx + c = 0
+          \]
+
+        \item When the discriminant, $b^2 - 4ac$, is negative, there is no real solution. Your method should return \code{Double.NaN} and print: \code{No Real Solutions}.
+      \end{itemize}
+  \end{questions}
+\end{document}
