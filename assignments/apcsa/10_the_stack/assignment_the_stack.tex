@@ -1,0 +1,46 @@
+\input{includes/assignment_preamble}
+
+\def\AssignmentCourse{AP Computer Science A}
+\def\AssignmentNumber{00}
+\def\AssignmentTitle{Sample Assignment}
+
+\begin{document}
+  \begin{questions}
+    \BlueQuestion{Add a method, \code{peek()}, to \code{Stack} that returns the most recently inserted element on the stack, without removing it.}
+
+    \BlueQuestion{Add a method, \code{isEmpty()}, to \code{Stack} that returns \code{true} if there are no elements in the stack and \code{false} otherwise.}
+
+    \GreenQuestion{Suppose that a client performs an intermixed sequence of \code{push()} and \code{pop()} operations on a stack of integers. The push operations put the integers $0$ through $9$, in order, on the stack; the pop operations print out the return value. Which of the following sequence(s) could \emph{not} occur?}
+      \begin{multicols}{2}
+        \begin{enumerate}[label=\texttt{\alph*.}]
+          \item 4 3 2 1 0 9 8 7 6 5
+          \item 4 6 8 7 5 3 2 9 0 1
+          \item 2 5 6 7 4 8 9 3 1 0
+          \item 4 3 2 1 0 5 6 7 8 9
+          \item 1 2 3 4 5 6 9 8 7 0
+          \item 0 4 6 5 3 8 1 7 2 9
+          \item 1 4 7 9 8 6 5 3 0 2
+          \item 2 1 4 3 6 5 8 7 9 0
+        \end{enumerate}
+      \end{multicols}
+
+    \GreenQuestion{Suppose \code{stack} is an object representing an implemented stack of integers. What does the following code fragment print when \code{N} is $50$? Explain what your output represents (you might want to try additional values for \code{N} to verify your answer).}
+      \begin{lstlisting}
+        while (N > 0) {
+          stack.push(N % 2);
+          N = N / 2;
+        }
+        while (!stack.isEmpty()) {
+          System.out.print(stack.pop())
+        }
+        System.out.println()
+      \end{lstlisting}
+    \YellowQuestion{Write the method \code{Parentheses()} that takes a string of different parentheses and uses a stack to determine whether its parenthesis are properly balanced. For example, your method should return \code{true} for\\ ``\texttt{[()]\{[()()]()\}}'' and \code{false} for ``\texttt{[(])}''. }\\[4pt]
+    {\small\textbf{Hint:} Use the \code{substring()} method of the \code{String} class.}
+
+    \RedQuestion{Suppose that we have a sequence of intermixed \code{push()} and \code{pop()} operations on a stack of integers. The push operations put the $N$ integers, $0$ through $N - 1$, in order on the stack; the pop operations print out the return value. Write the method, \code{ValidPermutation()}, that will return \code{true} if a given string representing a space-separated sequence of these integers represents valid output for this stack and \code{false} otherwise.}\\[4pt]
+    {\small\textbf{Hint \#1:} Your method should also take \code{N} as a parameter.}\\
+    {\small\textbf{Hint \#2:} This method should be able to answer Question \#3 for you.}\\
+    {\small\textbf{Hint \#3:} The \code{split()} method of the \code{String} class may be useful.}
+  \end{questions}
+\end{document}
