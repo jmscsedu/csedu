@@ -1,0 +1,47 @@
+\input{includes/assignment_preamble}
+
+\def\AssignmentCourse{AP Computer Science A}
+\def\AssignmentNumber{15}
+\def\AssignmentTitle{Recursive Functions}
+
+\begin{document}
+  \begin{questions}
+    \BlueQuestion{Explain what happens when a negative value is passed to the \code{Factorial()} method programmed in class.}
+
+    \BlueQuestion{Modify \code{Factorial()} in order to handle the error encountered in Question \#1 elegantly.}
+
+    \GreenQuestion{Evaluate \code{mystery(2, 25)} and \code{mystery(3, 11)} for the following recursive function.}
+      \begin{lstlisting}
+        public static int mystery(int a, int b) {
+          if (b == 0)
+            return 0;
+          if (b % 2 == 0)
+            return mystery(a + a, b / 2);
+          return mystery(a + a, b / 2) + a;
+        }
+      \end{lstlisting}
+
+    \GreenQuestion{Explain what is wrong with the following recursive function.}
+      \begin{lstlisting}
+        public static String work(int n) {
+          String s = work(n - 3) + n + work(n - 2) + n;
+          if (n <= 0)
+            return "";
+          return s;
+        }
+      \end{lstlisting}
+
+    \YellowQuestion{\emph{Quicksort.} Implement the \emph{Quicksort Algorithm} as detailed below.}
+      \textbf{Input:} An array, \code{A}, of integer values.
+
+      \begin{enumerate}
+        \item Pick any element from \code{A} to act as the \code{pivot} value.
+        \item Reorder the array so that all elements in \code{A} less than or equal to \code{pivot} are in a lower index than \code{pivot} and all elements in \code{A} greater than or equal to \code{pivot} are in a higher index than \code{pivot}.
+        \item Recursively apply steps \#1 \& 2 on the subarray of elements less than \code{pivot} and on the subarray of elements greater than \code{pivot}.
+      \end{enumerate}
+
+      \textbf{Output:} An array, \code{A}, of integer values in ascending order.
+
+    \RedQuestion{\emph{Partitions.} A \emph{partition} of a positive integer, $n$, is its representation as a sum of positive integers, $n = p_1 + p_2 + \cdots + p_k$. Write a method that prints out all possible partitions of a given positive integer, $n$. Consider only partitions where $p_1 \leq p_2 \leq \cdots \leq p_k$.}
+  \end{questions}
+\end{document}
