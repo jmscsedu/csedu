@@ -1,0 +1,33 @@
+\input{includes/assignment_preamble}
+
+\def\AssignmentCourse{AP Computer Science A}
+\def\AssignmentNumber{12}
+\def\AssignmentTitle{The Linked List}
+
+\begin{document}
+  \begin{questions}
+    \BlueQuestion{Explain at least one benefit and one drawback for using a linked list in place of a traditional array in the \code{Stack} and \code{Queue} data structures.}
+
+    \BlueQuestion{Implement the \code{trimN()} method in our \code{LinkedList} class. This method should take \code{N} as a parameter and remove the last \code{N} nodes from the list.}
+
+    \GreenQuestion{Implement \code{Queue} using a linked list. Ensure you maintain the use of generics as appropriate.}
+
+    \GreenQuestion{Implement the \code{find()} method in our \code{LinkedList} class. This method should take some data, \code{key}, as a parameter and return the index where \code{key} exists as the data for a particular \code{Node}. This method should return the value $-1$ if \code{key} does not exist in the linked list.}
+
+    \YellowQuestion{\emph{Doubly-Linked List.} Make all necessary changes to our \code{LinkedList} in order to implement a \emph{doubly-linked list} in which each node has both \code{Next} and \code{Previous} attributes. In particular, ensure that \code{add()} and \code{remove()} work as intended.}
+
+    \RedQuestion{\emph{Deque.} A double-ended queue or \emph{deque} (pronounded ``deck'') is like a stack of a queue but supports adding and removing items from both ends. A deque stores a collection of items and supports the following operations:}
+      \begin{center}
+        \small
+        \begin{tabular}{p{0.33\textwidth} r}
+          \code{isEmpty()} & is the deque empty?\\
+          \code{size()} & how many items are in the deque?\\
+          \code{pushLeft(item)} & add an item to the left end\\
+          \code{pushRight(item)} & add an item to the right end\\
+          \code{popLeft()} & remove and return an item from the left end\\
+          \code{popright()} & remove and return an item from the right end
+        \end{tabular}
+      \end{center}
+    Implement a \emph{deque} in Java using a doubly-linked list.
+  \end{questions}
+\end{document}
