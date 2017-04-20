@@ -1,0 +1,79 @@
+\input{includes/assignment_preamble}
+
+\def\AssignmentCourse{AP Computer Science A}
+\def\AssignmentNumber{00}
+\def\AssignmentTitle{Sample Assignment}
+
+\begin{document}
+  \begin{questions}
+    \BlueQuestion{Under what circumstances might it be more appropriate to select an asymptotically ``slower'' sorting algorithm? Be as specific as possible.}
+
+    \BlueQuestion{Which is ``asymptotically greater'', $n!$ or $n^n$? Explain your reasoning.}
+
+    \GreenQuestion{Explain why the following program segment runs in $O(\lg n)$ time.}
+      \begin{lstlisting}
+        while (n > 0) {
+          System.out.print(n % 2);
+          n /= 2;
+        }
+      \end{lstlisting}
+
+    \GreenQuestion{Explain why it is important to understand when a particular problem is algorithmically ``unsolvable.'' What can be done to tackle these types of problems?}
+
+    \YellowQuestion{Consider \emph{Euclid's Algorithm} given below.}\\[4pt]
+      \begin{minipage}{0.5\textwidth}
+        Algorithm:\\
+        \textbf{Input:} $a, b$: any two, positive integers.
+        \begin{lstlisting}[mathescape=true]
+          while $a \neq b$
+            if $a > b$
+              $a \leftarrow a - b$
+            otherwise
+              $b \leftarrow b - a$
+          return $a$
+        \end{lstlisting}
+      \end{minipage}
+      \begin{minipage}{0.5\textwidth}
+        Example:\\
+        \textbf{Input:} $12, 18$
+        \begin{center}
+          \begin{tabular}{|c | c |}
+            \hline
+            \qquad $\mathbf{a}$\qquad\ & \qquad $\mathbf{b}$\qquad\ \\
+            \hline
+            $12$ & $18$\\
+            \hline
+            $12$ & $6$\\
+            \hline
+            $6$ & $6$\\
+            \hline
+          \end{tabular}
+        \end{center}
+        \textbf{Output:} $6$
+      \end{minipage}
+
+      \begin{parts}
+        \part Follow \emph{Euclid's Algorithm} for each of the following pairs of numbers.
+          \begin{enumerate}[label=\roman*.]
+            \item $40, 16$
+            \item $75, 105$
+            \item $156, 286$
+          \end{enumerate}
+        \part How is the result of \emph{Euclid's Algorithm} ``mathematically significant''? That is, what does this algorithm actually produce as a result?
+        \part Implement \emph{Euclid's Algorithm} in Java.
+      \end{parts}
+
+      \RedQuestion{The \emph{Sieve of Eratosthenes} is an ancient algorithm designed for finding prime numbers below a given maximum value. It accomplishes this by marking as non-prime all multiples of each prime, starting with $2$. The following steps summarize how the sieve works.
+
+        \begin{enumerate}
+          \item Create a list of consecutive integers from $2$ through $n$: $[2, 3, 4, 5, ..., n]$.
+          \item Initialize $p$ to $2$, the smallest prime number.
+          \item Starting with $2p$, mark each multiple of $p$ less than or equal to $n$ as non-prime.
+          \item Set $p$ to the next number greater than $p$ that is not marked as non-prime. If no such number exists, stop.
+          \item When the algorithm stops, all numbers not marked non-prime are all the prime numbers below $n$.
+        \end{enumerate}
+
+        Create the method, \code{Eratosthenes()}, that will take $n$ as a parameter and use the \emph{Sieve of Eratosthenes} to find all prime numbers less than or equal to $n$. Verify your implementation by having your method print every found prime number.}
+
+  \end{questions}
+\end{document}
