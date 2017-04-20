@@ -1,0 +1,47 @@
+\input{includes/assignment_preamble}
+
+\def\AssignmentCourse{AP Computer Science A}
+\def\AssignmentNumber{00}
+\def\AssignmentTitle{Sample Assignment}
+
+\begin{document}
+  \begin{questions}
+    \BlueQuestion{Explain why the following code fragment does not work as intended.}
+      \begin{lstlisting}
+        ArrayList names = new ArrayList();
+        names.add("john");
+        names.add("greg");
+        ArrayList initials = new ArrayList();
+        for (int i = 0; i < names.size(); i++)
+          initials.add(names.get(i).substring(0, 1));
+      \end{lstlisting}
+      
+    \BlueQuestion{Write a method that takes an \code{ArrayList<String>} as its sole parameter and returns a new \code{ArrayList<String>} in which the elements from the given \code{ArrayList} are stored in reverse order. Your method should not change the original list.}
+
+    \GreenQuestion{Write a method that removes the smallest value from a given \code{ArrayList<Integer>}.}\\
+      {\small\textbf{Hint:} The \code{Integer} class has a \code{compareTo()} method.}
+
+    \GreenQuestion{Can an \code{ArrayList<Object>} be an element of itself? Test this hypothesis and explain your results.}
+
+    \YellowQuestion{The following program code is designed to remove all instances of the word ``hello'' from a populated \code{ArrayList} of \code{Strings} called \code{words}.}
+      \begin{lstlisting}
+        int i = 0;
+        while (i < words.size()) {
+          if ("hello".compareTo(words.get(i)) == 0)
+            words.remove(i);
+          i++;
+        }
+      \end{lstlisting}
+      \begin{parts}
+        \part Explain why the above code fragment does not work as intended.
+        \part Without changing any of the existing lines of code, add or insert a single line to enable the code fragment to work as intended.
+      \end{parts}
+
+    \RedQuestion{\emph{Failing Silently.} A method or program ``failing silently'' means that it fails to do what it was designed to without producing an error or any other message.}
+      \begin{parts}
+        \part Create the subclass of \code{ArrayList}, \code{SilentArrayList}, that will override each method of \code{ArrayList} that requires an \code{index} value and fails silently if that value is not a valid index of the \code{ArrayList}.\\
+        {\small\textbf{Hint:} Remember that the keyword \code{super} can be used to access methods of the super class.}
+        \part Describe a situation where failing silently might be the desired outcome for a method or program.
+      \end{parts}
+  \end{questions}
+\end{document}
