@@ -39,8 +39,41 @@
   %Common Raster Graphic formats (TIFF/GIF/PNG)
   %Indexed Colours & Colour Palettes
   %%Example of how colour palettes work...
-  %Simplified file format -- introduction to the case study's file format
+    \subsection{Our File Formats}
+      %Simplified file format -- introduction to the case study's file format
+      Because traditional image file formats use various forms of compression in order to save hard drive space and decrease transmission times as well as support a number of more advanced features (such as animations and alpha channels), their implementation is beyond the scope of this case study. To that end, the following two file formats have been designed in order to give the student a feel for how to handle binary image data without being bogged down with the individual details that go into advanced image file formats. They may be considered highly simplified versions of some of the more popular raster image file formats.
+      \subsubsection{Computer Science Bit-Map File Format}
+        %%Computer Science Bit-Map File Format
+        %%%'CSBM''w''h''bitmap data'
+        In order to distinguish a traditional bit-mapped image from an indexed colour one for this case study, the first four bytes of each bit-map image will contain the ASCII encoded characters: `CSBM' (Decimal: \code{67 83 66 77}). This is known as the file's \emph{signature} and indicates to a program attempting to process the file exactly what type of file is being read.\\[\baselineskip]
+        The following two bytes of the file will contain the width and height, respectively.\\
+        {\small\textbf{Note:} Because the width and height are each restricted to a single byte of information, the maximum size of an image in this format is $255 \times 255$.}\\[\baselineskip]
+        Each of the remaining bits represents the image data as either a $0$ to indicate a black pixel or a $1$ to indicate a white one. Any bits exceeding \emph{width} $\times$ \emph{height} should be ignored.
+        \begin{center}
+          \renewcommand\arraystretch{1.5}
+          \begin{tabular}{| c | c | c | c | c | c | c |}
+            \hline
+            \code{`C'} & \code{`S'} & \code{`B'} & \code{`M'} & \emph{width} & \emph{height} & \emph{image data}\\
+            \hline
+          \end{tabular}
+        \end{center}
 
+      \subsubsection{Computer Science Indexed Colour File Format}
+        %%Computer Science Indexed Colour File Format
+        %%%'CSIC''w''h''p''palette''graphic data'
+        The signature for the Computer Science Indexed Colour File Format is `CSIC' (Decimal: \code{67 83 73 67}).\\[\baselineskip]
+        As with the Computer Science Bit-Map File Format, the following two bytes of the file will contain the width and height, respectively.\\[\baselineskip]
+        The next byte will contain the number of elements in the colour palette, $p$. What follows is a group of $3p$ bytes, wherein each set of $3$ bytes contains the values for \emph{red}, \emph{blue}, and \emph{green} making up each color.\\
+        {\small\textbf{Note:} For the purposes of this case-study (and most colour indexed file formats), $p$ will be a power of $2$.}\\[\baselineskip]
+        Finally, each remaining group of $\lg p$ bits will represent a single pixel of the image. Any bits exceeding \emph{width} $\times$ \emph{height} $\times$ $\lg p$ should be ignored.
+        \begin{center}
+          \renewcommand\arraystretch{1.5}
+          \begin{tabular}{| c | c | c | c | c | c | c | c | c |}
+            \hline
+            \code{`C'} & \code{`S'} & \code{`I'} & \code{`C'} & \emph{width} & \emph{height} & \emph{palette count} & \emph{palette colours} & \emph{image data}\\
+            \hline
+          \end{tabular}
+        \end{center}
   \pagebreak
 
   \section{Section \#1} %Handling binary files...
@@ -50,6 +83,7 @@
         %The Java 'byte' primitive.
         %How to read individual bits from a byte.
       \subsubsection{Exercises}
+        %Opening the file and reading context information from it.
         %Read and write from a simple bitmap file into a two-dimensional array of bits.
       \subsubsection{Questions}
 
