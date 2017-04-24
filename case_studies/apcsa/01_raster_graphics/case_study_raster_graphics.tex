@@ -35,10 +35,76 @@
 	\pagebreak
 
   \section{Background}
-  %Bit-Mapped & Raster Graphics
-  %Common Raster Graphic formats (TIFF/GIF/PNG)
-  %Indexed Colours & Colour Palettes
-  %%Example of how colour palettes work...
+    If you've used a computer, chances are you've taken, stored, transmitted, and edited digital image files. For over half a century, computer scientists and other researchers have developed techniques for the processing of these files. Despite this, every file format designed for storing digital image data can be placed in one of two categories: \emph{raster} and \emph{vector} file formats. Although vector formats are interesting, they are not nearly as common, mostly due to being unsuited for handling complex image data from digital cameras and other image capturing devices. As such, this case-study will focus on the handling of raster graphics.
+
+    \subsection{Raster Graphics}
+      A \emph{raster graphic} file format is any digital image file format that arranges its information according to a rectangular grid of pixels. Various file formats have been created that allow for varying degrees of image data compression, colour-depth, and the lossless preservation of image data. These types of image files will typically represent image data as a combination of an indexed palette of colours along with data representing which indexed colour should be reproduced for a given pixel. In memory, these images can then be stored as rectangular arrays of data corresponding to the indices within the colour palette and processed for display on a computer monitor or other display device.\\[\baselineskip]
+      A special type of raster image, called a \emph{bitmap}, stores only binary image data. That is, a single bit is used to represent each pixel, with only two colours (typically black and white) available for display.
+      %Bit-Mapped & Raster Graphics
+    \subsection{Indexed Colours \& Colour Palettes}
+      Many raster image files store a \emph{colour palette} alongside the image pixel data to enable more colour-depth. These colour palettes setup an indexed listing of colours that can then be referenced within the image data. The following example shows a 4-colour palette, the corresponding image data, and the corresponding image using this scheme.\\[\baselineskip]
+      \begin{minipage}[t]{0.2\textwidth}
+        \begin{center}
+          \textbf{Colour Palette}
+          \ \\[9pt]
+          \renewcommand\arraystretch{1.25}
+          \begin{tabular}{| p{0.1\textwidth} | c |}
+            \hline
+            0 & \fcolorbox{black}{black}{\parbox{0.005\textwidth}{\ }} \\
+            \hline          
+            1 & \fcolorbox{black}{red}{\parbox{0.005\textwidth}{\ }} \\
+            \hline          
+            2 & \fcolorbox{black}{blue}{\parbox{0.005\textwidth}{\ }} \\
+            \hline          
+            3 & \fcolorbox{black}{green}{\parbox{0.005\textwidth}{\ }}\\
+            \hline          
+          \end{tabular}
+        \end{center}
+      \end{minipage}
+      \begin{minipage}[t]{0.4\textwidth}
+        \begin{center}
+          \textbf{Image Data}
+          \ \\[9pt]
+          \renewcommand\arraystretch{1.25}
+          \ttfamily\small
+          \begin{tabular}{| c | c | c | c | c | c | c | c | c | c | }
+            \hline
+            0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+            \hline         
+            0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 0 \\
+            \hline         
+            0 & 1 & 2 & 2 & 2 & 2 & 2 & 2 & 1 & 0 \\
+            \hline         
+            0 & 1 & 2 & 3 & 2 & 2 & 3 & 2 & 1 & 0 \\
+            \hline         
+            0 & 1 & 2 & 2 & 2 & 2 & 2 & 2 & 1 & 0 \\
+            \hline         
+            0 & 1 & 2 & 3 & 2 & 2 & 3 & 2 & 1 & 0 \\
+            \hline         
+            0 & 1 & 2 & 2 & 3 & 3 & 2 & 2 & 1 & 0 \\
+            \hline         
+            0 & 1 & 2 & 2 & 2 & 2 & 2 & 2 & 1 & 0 \\
+            \hline         
+            0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 0 \\
+            \hline         
+            0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\         
+            \hline         
+          \end{tabular}
+        \end{center}
+      \end{minipage}
+      \begin{minipage}[t]{0.4\textwidth}
+        \begin{center}
+          \textbf{Displayed Image}
+          \ \\[9pt]
+          \includegraphics[scale=0.4]{graphics/case_studies/01_RasterImageExample}
+        \end{center}
+      \end{minipage}
+      \ \\[\baselineskip]
+      When combined with other data-compression techniques, the use of a colour palette can drastically reduce the size of digital image files containing a limited number of colours ($256$ or less), such as logos, icons, emoticons, etc.
+      %Indexed Colours & Colour Palettes
+      %%Example of how colour palettes work...
+    \subsection{Common Raster Graphic File Formats}
+      %Common Raster Graphic formats (TIFF/GIF/PNG/JPG)      
     \subsection{Our File Formats}
       %Simplified file format -- introduction to the case study's file format
       Because traditional image file formats use various forms of compression in order to save hard drive space and decrease transmission times as well as support a number of more advanced features (such as animations and alpha channels), their implementation is beyond the scope of this case study. To that end, the following two file formats have been designed in order to give the student a feel for how to handle binary image data without being bogged down with the individual details that go into advanced image file formats. They may be considered highly simplified versions of some of the more popular raster image file formats.
