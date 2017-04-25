@@ -1,18 +1,18 @@
-\input{includes/case_study_preamble}
+\input{includes/lab_preamble}
 
-\def\CaseStudyCourse{AP Computer Science A}
-\def\CaseStudyNumber{01}
-\def\CaseStudyTitle{Raster Graphics}
+\def\LabCourse{AP Computer Science A}
+\def\LabNumber{09}
+\def\LabTitle{Raster Graphics}
 
 \begin{document}
 	\begin{coverpages}
 		\ \\[2cm]
 		\begin{center}
 			\huge
-			\textbf{Case Study: \CaseStudyTitle}
+			\textbf{\LabTitle}
 
 			\Large
-			\CaseStudyCourse
+			\LabCourse
 		\end{center}
 
 		\vspace{1.5cm}
@@ -112,7 +112,7 @@
         The GIF file format uses a colour palette scheme similar to the one discussed previously; however, each pixel is limited to 8-bits, resulting in a colour palette of no more than $256$ colours. This makes the file format unsuitable for high-colour images.
       \subsubsection{PNG}
         The \emph{\textbf{P}ortable \textbf{N}etwork \textbf{G}raphics} image format was first designed as an alternative to the GIF file format due to GIF's use of patented compression techniques. Since its introduction, it has become a popular alternative for web-based graphics, especially for graphics requiring high colour resolution. It's ability to handle a 24-bit colour palette (32-bits with an alpha channel) as well as non-paletted ``true-colour'' images allows for a colour-depth far exceeding GIF's $256$ colour palettes.\\[\baselineskip]
-        Despite the advantages of the PNG file format, it's greater colour-depth combined with lossless compression results in file-sizes generally larger than that of GIF and the popular JPG file formats. Additionally, the PNG file format does not support animations, although a related format, the \emph{\textbf{M}ultiple-image \textbf{N}etwork \textbf{G}raphics} format, was later created to support this feature.
+        Despite the advantages of the PNG file format, it's greater colour-depth combined with lossless compression results in file-sizes generally larger than that of GIF and the popular JPG/EXIF file formats. Additionally, the PNG file format does not support animations, although a related format, the \emph{\textbf{M}ultiple-image \textbf{N}etwork \textbf{G}raphics} format, was later created to support this feature.
       \subsubsection{JPG/JPEG + EXIF/JFIF}
         The \emph{\textbf{J}oint \textbf{P}hotographic \textbf{E}xperts \textbf{G}roup} created a compression and decompression technique for the sharing of digital images, particularly for photographs or other scenes depicting a large colour-depth and variation. Because it is a \emph{lossy} compression technique, it is not suitable for the sharing of images requiring precise high-resolution. The techniques used in compression also do not handle line-drawings or other images representing stark colour transitions, such as images of vertical or horizontal textures of different colours. Despite these limitations, the compression technique specified usually results in much smaller images, making JPEG a popular choice for sharing high-colour resolution images on the Internet.\\[\baselineskip]
         It should be noted that although images using this technique are usually labeled using the extention \code{jpg}, it is \emph{not} a file format. File formats have been developed which use the JPEG compression technique. Two popular ones are the \emph{\textbf{E}xchangeable \textbf{I}mage \textbf{F}ile \textbf{F}ormat}, often used by digital image capturing equipment such as digital cameras and camcorders, and \emph{\textbf{J}PEG \textbf{F}ile \textbf{I}nterchange \textbf{F}ormat}, often used by popular image editors, such as Adobe's Photoshop\textregistered.
@@ -157,61 +157,43 @@
         \end{center}
   \pagebreak
 
-  \section{Section \#1} %Handling binary files...
-    \subsection{Activity \#1}
-      \subsubsection{Introduction}
-        %How to read and write binary files.
-        %The Java 'byte' primitive.
-        %How to read individual bits from a byte.
-      \subsubsection{Exercises}
-        %Opening the file and reading context information from it.
-        %Read and write from a simple bitmap file into a two-dimensional array of bits.
-      \subsubsection{Questions}
-
-    \subsection{Activity \#2}
-      \subsubsection{Introduction}
-        %Dealing with Color objects.
-      \subsubsection{Exercises}
-        %Read and write binary data from a colour indexed file into a two-dimensional array of Color objects.
-      \subsubsection{Questions}
-
-  \pagebreak
-
-  \section{Section \#2} %Defining new colour palettes...
-    \subsection{Activity \#3}
-      \subsubsection{Introduction}
-        %The ColorPreset class.
-      \subsubsection{Exercises}    
-        %Reading & writing from a ColorPresets file => Activating the "Save Color Palette" button.
-        %Modifying the Color[][] array when new presets are selected.
-      \subsubsection{Questions}
-
-    \subsection{Activity \#4}
-      \subsubsection{Introduction}
-        %Different sizes for colour palettes (PNG/GIF options)
-      \subsubsection{Exercises}
-        %Allowing for larger colour palettes => Dynamically setting up the colour palettes for display.
-      \subsubsection{Questions}
-
+  \section{Activity \#1} %Reading/Writing Image Files
+    \subsection{Introduction}
+      %How to read and write binary files.
+      %The Java 'byte' primitive.
+      %How to read individual bits from a byte.
+    \subsection{Exercises}
+      \begin{enumerate}
+        \item Implement the \code{readImageFile()} method with the following requirements:
+          \begin{enumerate}
+            \item Instantiates and returns an \code{Image} class object, populating all of its relevant instance variables, as indicated below.
+            \item The \code{width} and \code{height} of the \code{Image} should be read from the image file.              
+            \item If the image type is \code{CSBM}, a colour palette should be created containing only two entries, one for \code{Color.BLACK} and one for \code{Color.WHITE}.
+            \item If the image is type \code{CSIC}, a colour palette should be read from the file containing the appropriate number of colours.
+            \item The \code{pixels} attribute of the \code{Image} should be created as a two-dimensional array of appropriate values.\\
+            {\small\textbf{Note:} \code{pixels.length} should be equal to the \emph{width} of image and \code{pixels[i].length} should be equal to the \emph{height} for each $i < width$.}
+          \end{enumerate}
+        \item Implement the \code{writeImageFile()} method with the following requirements:
+          \begin{enumerate}
+            \item Reads relevant information from the given \code{Image} object.
+            \item Selects which file format to use (\code{CSBM} or \code{CSIC}).
+            \item Write to a file following the guidelines of the appropriate file format from the Background.
+          \end{enumerate}
+      \end{enumerate}
+    \subsection{Questions}
 
   \pagebreak
-  
-  \section{Section \#3}
-    \subsection{Activity \#5} %Simple Transformations
-      \subsubsection{Introduction}
-        %
-      \subsubsection{Exercises}
-        %
-      \subsubsection{Questions}
-        %
 
-    \subsection{Activity \#6} %Colour Transformations
-      \subsubsection{Introduction}
-        %
-      \subsubsection{Exercises}
-        %
-      \subsubsection{Questions}
-        %
+  \section{Activity \#2} %Defining new colour palettes...
+    \subsection{Introduction}
+      %The ColorPreset class.
+    \subsection{Exercises}
+      \begin{enumerate}
+        \item Implement the \code{listColourPresets()} method. This method should populate the \code{colourPresets} \code{List} with each of the colour palettes in the ``ColourPresets'' file.
+        \item Implement the \code{selectColourPreset()} method. This method should update the currently displayed \code{Image} to use the selected preset colour palette.
+        \item Implement the \code{saveColourPreset()} method. This method should append the current palette to the ``ColourPresets'' file.
+      \end{enumerate}
+    \subsection{Questions}
 
   \pagebreak
 
