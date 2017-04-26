@@ -157,6 +157,16 @@
         \end{center}
   \pagebreak
 
+  \section{Applications}
+    \QBox{ }{4cm}
+    \ \\[9pt]
+    \QBox{ }{4cm}
+    \ \\[9pt]
+    \QBox{ }{4cm}
+    \ \\[9pt]
+    \QBox{ }{4cm}
+    
+  \pagebreak
   \section{Activity \#1} %Reading/Writing Image Files
     \subsection{Introduction}
       %How to read and write binary files.
@@ -164,16 +174,16 @@
       %How to read individual bits from a byte.
     \subsection{Exercises}
       \begin{enumerate}
-        \item Implement the \code{readImageFile()} method with the following requirements:
+        \item Implement the \code{openImageFile()} method with the following requirements:
           \begin{enumerate}
             \item Instantiates and returns an \code{Image} class object, populating all of its relevant instance variables, as indicated below.
             \item The \code{width} and \code{height} of the \code{Image} should be read from the image file.              
-            \item If the image type is \code{CSBM}, a colour palette should be created containing only two entries, one for \code{Color.BLACK} and one for \code{Color.WHITE}.
-            \item If the image is type \code{CSIC}, a colour palette should be read from the file containing the appropriate number of colours.
+            \item If the image type is \code{CSBM}, the colour palette object should remain \code{null}; the \code{hasPalette} instance variable should be instantiated appropriately.
+            \item If the image is type \code{CSIC}, a colour palette should be read from the file containing the appropriate number of colours; the \code{hasPalette} instance variable should be instantiated appropriately.
             \item The \code{pixels} attribute of the \code{Image} should be created as a two-dimensional array of appropriate values.\\
             {\small\textbf{Note:} \code{pixels.length} should be equal to the \emph{width} of image and \code{pixels[i].length} should be equal to the \emph{height} for each $i < width$.}
           \end{enumerate}
-        \item Implement the \code{writeImageFile()} method with the following requirements:
+        \item Implement the \code{saveImageFile()} method with the following requirements:
           \begin{enumerate}
             \item Reads relevant information from the given \code{Image} object.
             \item Selects which file format to use (\code{CSBM} or \code{CSIC}).
@@ -181,7 +191,8 @@
           \end{enumerate}
       \end{enumerate}
     \subsection{Questions}
-
+      %Row-Major vs Column-Major
+      
   \pagebreak
 
   \section{Activity \#2} %Defining new colour palettes...
