@@ -176,17 +176,17 @@
       \begin{enumerate}
         \item Implement the \code{openImageFile()} method with the following requirements:
           \begin{enumerate}
-            \item Instantiates and returns an \code{Image} class object, populating all of its relevant instance variables, as indicated below.
-            \item The \code{width} and \code{height} of the \code{Image} should be read from the image file.              
-            \item If the image type is \code{CSBM}, the colour palette object should remain \code{null}; the \code{hasPalette} instance variable should be instantiated appropriately.
-            \item If the image is type \code{CSIC}, a colour palette should be read from the file containing the appropriate number of colours; the \code{hasPalette} instance variable should be instantiated appropriately.
-            \item The \code{pixels} attribute of the \code{Image} should be created as a two-dimensional array of appropriate values.\\
+            \item Instantiates and returns an \code{RGImage} class object, populating all of its relevant instance variables, as indicated below.
+            \item The \code{width} and \code{height} of the \code{RGImage} should be read from the image file.              
+            \item If the image type is \code{CSBM}, a colour palette should be created containing only two entries, one for Color.BLACK and one for Color.WHITE.
+            \item If the image is type \code{CSIC}, a colour palette should be read from the file containing the appropriate number of colours.
+            \item The \code{pixels} attribute of the \code{RGImage} should be created as a two-dimensional array of appropriate values.\\
             {\small\textbf{Note:} \code{pixels.length} should be equal to the \emph{width} of image and \code{pixels[i].length} should be equal to the \emph{height} for each $i < width$.}
           \end{enumerate}
         \item Implement the \code{saveImageFile()} method with the following requirements:
           \begin{enumerate}
-            \item Reads relevant information from the given \code{Image} object.
-            \item Selects which file format to use (\code{CSBM} or \code{CSIC}).
+            \item Reads relevant information from the given \code{RGImage} object.
+            \item Selects which file format to use (\code{CSBM} or \code{CSIC}) based on the palette present within the \code{RGImage}.
             \item Write to a file following the guidelines of the appropriate file format from the Background.
           \end{enumerate}
       \end{enumerate}
