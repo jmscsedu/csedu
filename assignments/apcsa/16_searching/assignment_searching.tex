@@ -1,0 +1,44 @@
+\input{includes/assignment_preamble}
+\usepackage{tikz}
+\usetikzlibrary{fit}
+
+\tikzset{highlight/.style={rectangle,rounded corners,fill=blue!30,draw,fill opacity=0.25,inner sep=0pt}}
+\newcommand{\tikzmark}[2]{\tikz[overlay,remember picture,baseline=(#1.base)] \node (#1) {#2};}
+\newcommand{\Highlight}[1][submatrix]{%
+  \tikz[overlay,remember picture]{
+    \node[highlight,fit=(left.north west) (right.south east)] (#1) {};
+  }
+}
+
+\def\AssignmentCourse{AP Computer Science A}
+\def\AssignmentNumber{16}
+\def\AssignmentTitle{Searching}
+
+\begin{document}
+  \begin{questions}
+    \BlueQuestion{What is the maximum number of recursive calls to \code{BinarySearch()} that will be made on an array of $20,000$ elements?}
+    \BlueQuestion{In your own words, explain why data should be sorted prior to a call to \code{BinarySearch()}. What might happen if the data is not sorted?}
+    \GreenQuestion{Explain why it is not generally advisable to check to see if data is sorted before employing binary search techniques on it. How might you detect unsorted data within the binary search method?}
+    \GreenQuestion{Overload \code{BinarySearch()} to accept an array of any \code{Comparable} data type.}    
+    \YellowQuestion{Implement the \code{closestSum()} method. This method should take as parameters an array of integers, \code{a}, and an integer, \code{sum}, and output the two elements of \code{a} whose sum is \emph{closest} to \code{sum}.\\
+      {\small\textbf{Note:} You may assume that \code{a} is in sorted order.}}
+    \RedQuestion{\emph{Wordsearch Solver.} Implement the \code{findWord()} method. This method should take as parameters a two-dimensional array of \code{char} values and a single \code{String} and output the location and direction (i.e., ``Diagonal, Down-Right'') of the word within the array. ``Word Not Found'' should be printed if the given word is not in the puzzle. See below for an example.}\\[\baselineskip]
+      {\small\textbf{Example:} Consider the following array of characters, stored in variable \code{puzzle}.}
+      \begin{center}
+        \begin{tabular}{c c c c c c c c}
+            O & E & Y & O & K & E & R & A\\
+            E & R & N & B & R & E & N & N\\
+            L & S & S & E & O & W & Y & R\\
+            B & U & D & V & D & D & K & B\\
+            R & \tikzmark{left}{M} & O & N & I & T & O & \tikzmark{right}{R}\\
+            O & U & N & E & O & T & Y & S\\
+            W & E & O & L & E & O & N & S\\
+            S & O & T & K & R & O & R & P
+        \end{tabular}
+        \Highlight[first]
+      \end{center}
+      {\small A call to \code{findWord(puzzle, "MONITOR"")} should output: \code{(5, 2) Horizontal, Right}.}\\
+      {\small A call to \code{findWord(puzzle, "COMPUTER"")} should output: \code{Word Not Found}.}\\[\baselineskip]
+      {\small\textbf{Note:} You should assume the word can be arranged within the puzzle in any direction, including backwards!}
+  \end{questions}
+\end{document}
