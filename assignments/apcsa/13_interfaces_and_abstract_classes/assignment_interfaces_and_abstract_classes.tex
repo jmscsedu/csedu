@@ -1,0 +1,100 @@
+\input{includes/assignment_preamble}
+
+\def\AssignmentCourse{AP Computer Science A}
+\def\AssignmentNumber{13}
+\def\AssignmentTitle{Interfaces \& Abstract Classes}
+
+\begin{document}
+  \begin{questions}
+    \BlueQuestion{Suppose we have the following classes in our program.}
+
+      \begin{lstlisting}
+        public abstract class Toy { ... }
+        public class Doll extends Toy { ... }
+        public class Barbie extends Doll { ... }
+      \end{lstlisting}
+
+      Assume that \code{Toy}, \code{Doll}, and \code{Barbie} each have constructors that accept no parameters.
+      
+      If an object, \code{child}, has a method \code{play(Doll doll)}, which of the following statements will compile with no errors?
+      
+      \begin{choices}
+        \choice \code{child.play(new Object());}
+        \choice \code{child.play(new Toy());}
+        \choice \code{child.play(new Doll());}
+        \choice \code{child.play(new Barbie());}
+      \end{choices}
+
+    \BlueQuestion{Indicate whether each of the following statements is \code{True} or \code{False.}
+      \begin{choices}
+        \choice You can create interfaces that are ``subinterfaces'' of other interfaces.
+        \choice A class can implement only one interface at a time.
+        \choice An interface can be used as the data type for parameters in methods and while declaring variables.
+      \end{choices}
+    }
+
+    \GreenQuestion{Indicate whether each of the following statements is \code{True} or \code{False}.
+      \begin{choices}
+        \choice You can't create objects of an abstract class.
+        \choice You can't create non-abstract subclasses of an abstract class.
+        \choice You can't create abstract subclasses of an abstract class.
+        \choice \code{Object} is an abstract class.
+        \choice An abstract class can be used as the data type for parameters in methods and while declaring variables.
+      \end{choices}
+    }
+
+    \GreenQuestion{Complete the \code{compareTo()} method below which will determine whether or not an \code{Atom} object appears before or after another \code{Atom} in the periodic table.}
+    
+      \begin{lstlisting}
+        class Atom implements Comparable<Atom> {
+          private int atomicNumber;
+
+          public int compareTo(Atom a) {
+            //  To be implemented.
+          }
+
+          // There may be instance variables, constructors, and other methods not shown.
+        }
+      \end{lstlisting}
+
+    \YellowQuestion{Answer each of the following questions.
+      \begin{parts}
+        \part{Describe a \code{BankTransaction} class which would handle the various different types of transactions between accounts in a bank. In particular, it should be able to describe withdrawals, deposits, and tranfers of funds between accounts. How would you design such a class? In particular, describe the instance variables and methods which might exist for this class.}
+        \part{Would it be appropriate to represent \code{BankTransaction} as a \code{class}, \code{abstract class}, or an \code{interface}? Explain your choice.}
+      \end{parts}
+    }
+
+    \RedQuestion{Complete each of the following exercises and questions.}
+      \begin{parts}
+        \part{Implement a \code{BankAccount} abstract class with:
+          \begin{itemize}
+            \item an appropriate instance variable to hold the current balance in the account,
+            \item abstract method \code{processTransaction()} which will take a \code{BankTransaction} parameter,
+            \item helper methods \code{depositAmount()} and \code{withdrawAmount()} which should update the balance in the account appropriately, and
+            \item an accessor method to the balance in the account.
+          \end{itemize}
+        }
+        \pagebreak
+        \part{Complete the \code{makePayment()} method below.}\\
+        {\small\textbf{Note:} This method would likely be part of a larger system and should \emph{not} be included in the \code{BankAccount} class.}
+
+        \begin{lstlisting}[basicstyle=\ttfamily\small,tabsize=2]
+          /**
+           * Generates appropriate BankTransaction objects to withdraw money from one 
+           * account and deposit it into another.
+           * 
+           * @param from  The account to transfer an amount from.
+           * @param to    The account to transfer an amount to.
+           * @param amt   The amount to transfer.
+           * @return  Returns true if the transaction was successful and 
+           *          false otherwise.
+           */
+          public boolean makePayment(BankAccount from, BankAccount to, double amt) {
+            //  To be implemented
+          }
+        \end{lstlisting}
+        \part{Suppose \code{CheckingAccount}, \code{SavingsAccount} and \code{LoanAccount} were each subclasses of \code{BankAccount}. Briefly describe how their \code{processTransaction()} implementations might differ.}
+        \part{Why is it appropriate to implement \code{BankAccount} as an abstract class rather than an interface?}
+      \end{parts}
+  \end{questions}
+\end{document}
