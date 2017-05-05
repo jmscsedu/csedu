@@ -1,0 +1,44 @@
+\input{includes/assignment_preamble}
+\usepackage{textcomp}
+
+\def\AssignmentCourse{AP Computer Science Principles}
+\def\AssignmentNumber{03}
+\def\AssignmentTitle{Using Variables}
+
+\begin{document}
+  \begin{questions}
+    %Random
+    \BlueQuestion{The method call, \code{random(256)} will generate a random value between $0$ and $255$. Create a Processing program that will generate and store three random values for red, green, and blue and draw a circle using this random colour as its fill. Run your program multiple times to observe the random colour effect.}
+
+    %Explanation as to initialization purpose?
+    \BlueQuestion{Explain which data type you'd use to store each of the following pieces of information.}
+      \begin{parts}
+        \part The year you are graduating from high school,
+        \part The area of a given triangle,
+        \part Whether or not you are taking a Computer Science course.
+      \end{parts}
+
+    \GreenQuestion{Use the following code fragment to answer each of the following questions.}
+      \begin{center}
+        \code{int n = 50.7;}
+      \end{center}
+      \begin{parts}
+        \part What error is reported when you run this code fragment?
+        \part On the other hand, a statement like: \code{float n = 50;} runs without an error. Why do you think initializing an integer variable to a float causes an error while doing the reverse does not?
+      \end{parts}
+
+    \GreenQuestion{The \code{int()} method will accept a non-integer parameter and attempt to convert it into an integer. For instance, \code{int(4.7)} will return the integer value of \code{4}. Create a Processing sketch to \code{print()} the result of \code{int('a')}. What do you think the printed value indicates? Print a number of other characters to test your claim.}
+
+    %Modify size of dartboard?
+    \YellowQuestion{Using a \code{float} variable, \code{dartBoardScale}, modify your dartboard drawing program from Assignment \#2 so that it will scale by a factor of \code{dartBoardScale}. That is, \code{dartBoardScale=0.5} will produce a dartboard half the size of the original, while \code{dartBoardScale=2.0} will produce one double in size.}
+
+    \RedQuestion{Complete each of the following exercises.}
+      \begin{parts}
+        \part Use two integer variables, \code{beeX} and \code{beeY}, to represent the center of the Processing Bee's head. Modify all other $x$ and $y$ values in your Processing Bee program to reference \code{beeX} and \code{beeY}.\\
+          {\small\textbf{Note:} Use the Processing Bee program you created in Assignment \#2 as the basis for this, but keep your old program. You'll need it for the next question.}
+        \part Use the Processing reference for the \code{translate()} method (https://processing.org/reference/translate\_.html) to accomplish the same task as in part (a).
+        \part How does your implementation differ from what Processing does with the \code{translate()} method? What potential pros and cons exist for using each of these methods?
+      \end{parts}
+
+  \end{questions}
+\end{document}
