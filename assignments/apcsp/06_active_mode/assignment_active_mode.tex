@@ -1,0 +1,64 @@
+\input{includes/assignment_preamble}
+
+\def\AssignmentCourse{AP Computer Science Principles}
+\def\AssignmentNumber{06}
+\def\AssignmentTitle{Active Mode}
+
+\begin{document}
+  \begin{questions}
+    \BlueQuestion{If \code{dx} holds the horizontal speed a particular element should travel from frame to frame for a given program, write a code fragment to reverse its horizontal direction \emph{without} using a conditional.}
+
+    \BlueQuestion{Explain why variables whose changes need to persist from frame to frame should be declared \emph{outside} the \code{draw()} method.}
+
+    \GreenQuestion{The following code fragment produces an error. Why do you think Processing prohibits you from creating a program with a mixture of ``active'' and ``static'' mode elements?}
+      \begin{lstlisting}
+        void setup() {
+          size(250, 250);
+          background(255);
+        }
+
+        ellipse(125, 125, 50, 50);
+      \end{lstlisting} 
+
+    \GreenQuestion{Write a program that will draw a small circle in the center of the window and gradually increase its size over time.}
+
+    \YellowQuestion{Write a program that will draw a $10 \times 10$ box in the upper left-hand corner of the window and animate the box moving along the window's edge.}\\
+      {\small\textbf{Note:} Your program should work regardless of window size and should represent an ``infinite'' loop. That is, the box should continue travelling around the edge of the window until the program is closed.}
+
+    \RedQuestion{The following program is designed as a very simple simulation of gravity.} %Gravity (Help + Questions)
+      \begin{lstlisting}
+        float ballHeight = 0;         // starting height of the ball
+        float speed = 0, g = 0.1;     // current speed of the ball and acceleration due to gravity
+        float dampening = -0.8;        // dampening effect for the ball
+
+        void setup() {
+          size(100, 250);
+          background(255);
+        }
+
+        void draw() {
+          // draw the ball
+          fill(0);
+          ellipse(width / 2, ballHeight, 10, 10);
+
+          // modify the ball's height
+          ballHeight += speed;
+          // increase the speed of the ball due to gravity
+          speed += g;
+
+          // bounce!
+          if (ballHeight > height) {
+            speed *= dampening;
+            ballHeight = height;
+          }
+        }
+      \end{lstlisting}
+      Run the program a few times with different values for \code{g} and \code{dampening} and answer each of the following questions.
+      \begin{parts}
+        \part Explain what effect \code{dampening} has on the ball. 
+        \part What would happen if \code{dampening} were set to a positive value? To $-1$? Explain each of these.
+        \part Explain why \code{g} is set to a fairly small number. What happens if it is set to a larger number, such as $5$?        
+        \part Explain why the ball never comes to a \code{rest}. How would you fix this issue?
+      \end{parts}
+  \end{questions}
+\end{document}
