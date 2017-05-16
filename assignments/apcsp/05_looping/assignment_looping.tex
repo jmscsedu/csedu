@@ -1,0 +1,86 @@
+\input{includes/assignment_preamble}
+
+\def\AssignmentCourse{AP Computer Science Principles}
+\def\AssignmentNumber{05}
+\def\AssignmentTitle{Looping}
+
+\begin{document}
+  \begin{questions}
+    %While -> For loop
+    \BlueQuestion{Write the following code fragment as a \code{for} loop.}
+      \begin{lstlisting}
+        int i = 0;
+        while (i < 10) {
+          ellipse(i, i, i, i);
+          i++;
+        }
+      \end{lstlisting}
+
+    %For -> While loop
+    \BlueQuestion{Write the following code fragment as a \code{while} loop.}
+      \begin{lstlisting}
+        for (int i = 0; i < width; i = i + 5)
+          line(i, 0, i, height);
+      \end{lstlisting}
+
+    %Syntax Errors
+    \GreenQuestion{A common error beginning programmers face with the \code{for}-loop is illustrated in the code segment below:}
+      \begin{lstlisting}
+        for (int i = 0; i < 100; i = i + 5); 
+          line(i, 0, i, height);
+      \end{lstlisting}
+      \begin{parts}
+        \part Identify the error in the code above.
+        \part This type of error is actually a \emph{semantic} error. That is, Processing accepts the code as valid; however, it will not do what appears to be intended by the programmer. What happens when the above code fragment is run and why?
+      \end{parts}
+
+    %Grid of Bees!
+    \GreenQuestion{Use nested loops to create a grid of Processing Bees based on your work on the Processing Bee program from Assignment \#3.}\\
+      {\small\textbf{Note:} Your program should include as many bees as possible based on the \code{width} and \code{height} of the drawing canvas. You may include some padding between consecutive bees for aesthetic reasons if you wish.}
+
+    %Redesign Dartboard
+    \YellowQuestion{Redesign your \code{Dartboard} program from Assignment \#3 to use loops wherever possible in order to drastically reduce the number of individual lines of code.}
+
+    %Graphing a particular mathematical function?
+    %Setting up a graphing window
+    %Translate function?
+    \RedQuestion{Although the Processing drawing canvas has a pixel coordinate statement wherein the top-left coordinate is always \code{(0, 0)} and the bottom-right coordinate is always \code{(width, height)}, it is often important to offer different ``views'' of data, requiring a transformation of the coordinate system. Implement a program that will store values for \code{xMin}, \code{xMax}, \code{xStep}, \code{yMin}, \code{yMax}, and \code{yStep} and produces a coordinate grid, including coordinate axis. This will allow us to produce a ``window'' system similar to many popular graphing calculators. See below for a number of examples.}
+
+      \begin{minipage}{0.33\textwidth}
+        \begin{center}
+          \small
+          \includegraphics[scale=0.5]{files/Example1}
+
+          \begin{tabular}{l c l c}
+            \code{xMin} & -5 & \code{yMin} & -5\\
+            \code{xMax} & 25 & \code{yMax} & 25\\
+            \code{xStep} & 5 & \code{yStep} & 5\\
+          \end{tabular}
+        \end{center}
+      \end{minipage}
+      \begin{minipage}{0.33\textwidth}
+        \begin{center}
+          \small      
+          \includegraphics[scale=0.5]{files/Example2}
+
+          \begin{tabular}{l c l c}
+            \code{xMin} & -10 & \code{yMin} & -10\\
+            \code{xMax} & 10 & \code{yMax} & 10\\
+            \code{xStep} & 1 & \code{yStep} & 1\\
+          \end{tabular}
+        \end{center}    
+      \end{minipage}
+      \begin{minipage}{0.33\textwidth}
+        \begin{center}
+          \small      
+          \includegraphics[scale=0.5]{files/Example3}
+
+          \begin{tabular}{l c l c}
+            \code{xMin} & -100 & \code{yMin} & 0\\
+            \code{xMax} & 10 & \code{yMax} & 100\\
+            \code{xStep} & 10 & \code{yStep} & 5\\
+          \end{tabular}
+        \end{center}            
+      \end{minipage}
+  \end{questions}
+\end{document}
