@@ -26,10 +26,10 @@
       {\small\textbf{Note:} Your program should work regardless of window size and should represent an ``infinite'' loop. That is, the box should continue travelling around the edge of the window until the program is closed.}
 
     \RedQuestion{The following program is designed as a very simple simulation of gravity.} %Gravity (Help + Questions)
-      \begin{lstlisting}
-        float ballHeight = 0;         // starting height of the ball
-        float speed = 0, g = 0.1;     // current speed of the ball and acceleration due to gravity
-        float dampening = -0.8;        // dampening effect for the ball
+      \begin{lstlisting}[basicstyle=\small\ttfamily]
+        float ballHeight = 0;     // starting height of the ball
+        float speed = 0, g = 0.1; // current speed of the ball and acceleration due to gravity
+        float dampening = -0.8;   // dampening effect for the ball
 
         void setup() {
           size(100, 250);
