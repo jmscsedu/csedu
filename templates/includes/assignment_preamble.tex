@@ -1,4 +1,7 @@
 \input{includes/preamble}
+\usepackage{draftwatermark,transparent}
+\SetWatermarkAngle{0}
+\SetWatermarkText{\transparent{0.025}\includegraphics[scale=0.75]{graphics/logo_black.png}}
 
 %Color-Coded questions
 \newcommand{\ColourQuestion}[3]{\renewcommand{\questionlabel}{\colorbox{#1}{\bfseries\color{white}\thequestion}\hfill}\question[#3] #2}
