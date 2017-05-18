@@ -1,0 +1,65 @@
+\input{includes/assignment_preamble}
+
+\def\AssignmentCourse{AP Computer Science Principles}
+\def\AssignmentNumber{07}
+\def\AssignmentTitle{Creating Methods}
+
+\begin{document}
+  \begin{questions}
+    \BlueQuestion{Identify the syntax error in each of the following.} %Syntax Error
+      \begin{parts}
+        \part \begin{lstlisting}
+          void drawIt(x, y) {
+            // implementation not shown
+          }
+        \end{lstlisting}
+
+        \part \begin{lstlisting}
+          void doSomething {
+            // implementation not shown
+          }
+        \end{lstlisting}
+
+        \part \begin{lstlisting}
+          mystery(boolean a) {
+            // implementation not shown
+          }
+        \end{lstlisting}
+      \end{parts}
+
+    \BlueQuestion{Explain why the following does not work as intended.} %Variable Scope Error
+      \begin{lstlisting}
+        int a = 4;
+
+        void draw() {
+          incr(a);
+        }
+
+        void incr(int a) {
+          a = a + 1;
+        }
+      \end{lstlisting}
+
+    \GreenQuestion{Explain why you might want to use a method to represent a section of your programming code, even if that section does not need to be repeated.} %Explanation on a method even if used only once...
+
+    \GreenQuestion{Create the \code{dartboard()} method which will take as its sole parameter, \code{scale}, to use as the scale of the dartboard. Use your most recent rendition of the Dartboard program from Assignment \#5 as the basis for this method.}
+
+    \YellowQuestion{
+      Implement the \code{transformAndDrawPoint()} method with the following definition:
+      \begin{center}
+        \code{transformAndDrawPoint(x, y, xMin, yMin, xMax, yMax, size)}
+      \end{center}
+      which will transform the point, $(x, y)$, from a coordinate plane defined by $(xMin, yMin), (xMax, yMax)$ to one defined by $(0, 0), (width, height)$ and draw it on the screen as a circle centered at $(x^\prime, y^\prime)$ with diameter $size$.
+    }\\
+    {\small\textbf{Note:} You may want to use your solution to drawing a graph from Assignment \#5 in order to guide and test your solution for this question.}
+
+    \RedQuestion{
+      Revisit your most recent Processing Bee implementation (Assignment \#3) to implement each of the following.
+      \begin{parts}
+        \part The \code{drawBee()} method which accepts the parameters, \code{x} and \code{y}, and draw the Processing Bee centered on the given \code{x} and \code{y}.
+        \part An overloaded \code{drawBee()} method which accepts the parameters, \code{x} and \code{y}, and additionally accepts the \code{scale} parameter to draw the Processing Bee centered on the given \code{x} and \code{y} and scaled according to the given scale factor.
+        \part Change your solution to part (a) to call your method from part (b). Explain why this approach might be beneficial.
+      \end{parts}
+    }
+  \end{questions}
+\end{document}
