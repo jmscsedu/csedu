@@ -1,0 +1,48 @@
+\input{includes/assignment_preamble}
+
+\def\AssignmentCourse{AP Computer Science Principles}
+\def\AssignmentNumber{08}
+\def\AssignmentTitle{Adding Interaction}
+
+\begin{document}
+  \begin{questions}
+    \BlueQuestion{Explain what the following code fragment does.}
+      \begin{lstlisting}
+        void draw() {
+          if (mouseX < width / 2)
+            background(255, 0, 0);
+          else
+            background(0, 255, 0);
+        }
+      \end{lstlisting}
+
+    \BlueQuestion{When you move the mouse quickly, any element relying on \code{mouseX} and/or \code{mouseY} for its location seems to ``lag'' behind by a very short delay. Explain why this occurs.}
+
+    \GreenQuestion{Under what circumstances would you use the \emph{mouse} for user interaction over the keyboard? When would you choose to use the \emph{keyboard}?}
+    
+    \GreenQuestion{The keyword \code{keyPressed} evaluates to \code{true} if a keyboard key is currently pressed and \code{false} if it is not. Create a program that will draw a random rectangle on the screen every time a key is pressed.}
+
+    \YellowQuestion{
+      \begin{parts}
+        \part Create a program that will draw a random square on the screen. This square should change colour in response to a mouse click.\\{\small\textbf{Note:} The box should change colour only if the mouse is clicked on the box itself, not just anywhere on the screen.}
+        \part Explain how you would expand your program to draw $3$ squares on the screen that respond to a mouse click. $5$? $10$?
+      \end{parts}
+    }
+
+    \RedQuestion{Create a program that will accomplish each of the following tasks.
+      \begin{parts}
+        \part Draw a vertical and horizontal line always intersecting at (\code{width}, \code{height}).\\
+              {\small\textbf{Hint:} Placing the \code{noCursor()} command in \code{setup()} will result in a more pleasant display.}
+              \begin{center}
+                \includegraphics[scale=0.6]{files/BallBounce0}
+              \end{center}
+        \part Adopt the methods implemented in class as part of our \code{BallBounce} program in order to program a ball that bounces off the newly drawn lines as well as the sides of the window.\\
+              {\small\textbf{Note:} You will have to take the direction and heading of the ball into account in order to have it bounce off the new lines correctly.}
+              \begin{center}
+                \includegraphics[scale=0.5]{files/BallBounce1} \hspace{2cm} \includegraphics[scale=0.5]{files/BallBounce2}
+              \end{center}
+        \part Modify your program to allow the ball to pass through the drawn lines when the mouse button is held down. Implement some visual clue that indicates the ball will be allowed to pass.
+      \end{parts}
+    }
+  \end{questions}
+\end{document}
