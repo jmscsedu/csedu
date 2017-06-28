@@ -2,7 +2,7 @@
 \usepackage{tikz}
 \usetikzlibrary{fit}
 
-\tikzset{highlight/.style={rectangle,rounded corners,fill=blue!30,draw,fill opacity=0.25,inner sep=0pt}}
+\tikzset{highlight/.style={rectangle,rounded corners,fill=none,draw,fill opacity=0.25,inner sep=0pt}}
 \newcommand{\tikzmark}[2]{\tikz[overlay,remember picture,baseline=(#1.base)] \node (#1) {#2};}
 \newcommand{\Highlight}[1][submatrix]{%
   \tikz[overlay,remember picture]{
