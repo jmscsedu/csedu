@@ -27,8 +27,6 @@
 		\end{center}
 	\end{coverpages}
 
-	\blankpage
-
 	\thispagestyle{empty}
 	\tableofcontents
 
@@ -36,7 +34,7 @@
 
 	\section{Background}
 		In this lab, you will be creating a method for finding the day of the week for any given date (day, month, year) and will use that method for generating a full calendar display for a given month.\\[\baselineskip]
-		There have been a number of different algorithms developed to calculate what dy of the week a given past or future date falls on. Although many of these methods require faily complex look-up tables, a formula has been developed that can be used to directly calculate the day of the week without having to store or process these tables. This formula is given below:
+		There have been a number of different algorithms developed to calculate what day of the week a given past or future date falls on. Although many of these methods require fairly complex look-up tables, a formula has been developed that can be used to directly calculate the day of the week without having to store or process these tables. This formula is given below:
 
 		\[
 			w = \left(d + \floor{2.6m - 0.2} + y + \floor{\dfrac{y}{4}} + \floor{\dfrac{c}{4}} - 2c\right) \mathbf{mod}\ 7
@@ -59,7 +57,7 @@
 		\subsection{Examples}
 			\EBox{July 9, 1983}{
 				\[
-					w = \left(9 + \floor{2.6(5) - 0.2} + 83 + \floor{\dfrac{83}{41}} + \floor{\dfrac{19}{4}} - 2(19)\right) \mathbf{mod}\ 7 = 6
+					w = \left(9 + \floor{2.6(5) - 0.2} + 83 + \floor{\dfrac{83}{4}} + \floor{\dfrac{19}{4}} - 2(19)\right) \mathbf{mod}\ 7 = 6
 				\]
 				\textbf{Result:} \emph{Saturday}
 			}
@@ -83,7 +81,7 @@
 	\section{Applications}
 		\QBox{Use the formula described in the background to calculate the day of the week for your birthday this year. Then, calculate the day of the week for your original birthday.}{4cm}
 		\ \\[9pt]
-		\QBox{Explain what happens when you attempt to calculate the day of the week for a non-existent day (February 29, 2017 or July 33, 2020). Is the result consisitent with what you would expect for this kind of formula? Explain why or why not.}{4cm}
+		\QBox{Explain what happens when you attempt to calculate the day of the week for a non-existent day (February 29, 2017 or July 33, 2020). Is the result consisitent with what you would expect? Explain why or why not.}{4cm}
 		\ \\[9pt]
 		\QBox{In September, 1752, Britain and its colonies began using the Gregorian calendar. This caused Thursday, September 14, 1752 to be preceded by Wednesday, September 2, 1752. Will the formula described in the background take this calendar switch into account? Explain why or why not.}{4cm}
 		\ \\[9pt]
@@ -96,14 +94,15 @@
 		\subsection{Exercises}
 			\begin{enumerate}
 				\item Implement the \code{calculateDayOfWeek()} method. This method should take as parameters the \code{day}, \code{month}, and \code{year} for the desired date and return the day of the week for that date as a number between 0 and 6.
-				\item Implement the \code{getDayOfWeek()} method. This method should take as parameters the \code{day}, \code{month}, and \code{year} for the desired date and return the day of the week as a string (``Monday'', ``Tuesday'', etc.).
+				\item Implement the \code{getDayOfWeek()} method. This method should take as parameters the \code{day}, \code{month}, and \code{year} for the desired date and return the day of the week as a \code{String} (``Monday'', ``Tuesday'', etc.).
+
 							{\small\textbf{Note:} Your \code{getDayOfWeek()} method should use the \code{calculateDayOfWeek()} method previously implemented.}
 			\end{enumerate}
 
 		\subsection{Questions}
 			\QBox{Briefly explain the method you used to calculate $y$ and $c$ from the \code{year} variable that was passed.}{5cm}
 			\ \\[9pt]
-			\QBox{Why do you think it is considered ``better practice'' to have used the \code{calculateDayOfWeek()} method within the implementation of \code{getDayOfWeek()} rather than just repeating the use of the formula?}{5cm}
+			\QBox{Why do you think it is considered ``better practice'' to use the \code{calculateDayOfWeek()} method within the implementation of \code{getDayOfWeek()} rather than just repeating the use of the formula?}{5cm}
 
 	\pagebreak
 
@@ -113,7 +112,7 @@
 			\begin{center}
 				\small
 				\begin{tabular}{c c c c c c c}
-					\multicolumn{7}{c}{January, 2017}\\
+					\multicolumn{7}{c}{March, 2018}\\
 					Mo & Tu & We & Th & Fr & Sa & Su\\
 					\ & \ & \ & 01 & 02 & 03 & 04 \\
 					05 & 06 & 07 & 08 & 09 & 10 & 11 \\
@@ -131,9 +130,9 @@
 
 		\subsection{Exercise}
 			\begin{enumerate}
-				\item Implement the \code{isLeapYear()} method which will take a year as input and produce \code{true} if the given year is a leap year and \code{false} otherwise.
+				\item Implement the \code{isLeapYear()} method which will take a year as input and return \code{true} if the given year is a leap year and \code{false} otherwise.
 				\item Implement the \code{printCalendar()} method which will take a month and year as input and produce the output described in the introduction to this activity.\\
-			{\small\textbf{Note:} Unlike the formula you used for \code{calculateDayOfWeek()}, your implementation of \code{printCalendar()} will have to use \code{isLeapYear()} in order to manually handle February's calendar output.}
+			{\small\textbf{Note:} Unlike the formula you used for \code{calculateDayOfWeek()}, your implementation of \code{printCalendar()} will have to use \code{isLeapYear()} in order to handle February's calendar output.}
 			\end{enumerate}
 
 		\subsection{Questions}
