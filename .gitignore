@@ -2,6 +2,7 @@
 *.log
 *.aux
 *.toc
+*.synctex.gz
 
 #General
 ~*
