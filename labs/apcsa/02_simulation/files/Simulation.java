@@ -28,11 +28,11 @@ public class Simulation {
 		System.out.println(estimateProbability(50, 15));	// Output: ~0.220
 		System.out.println(estimateProbability(100, 25));	// Output: ~0.080
 
-		//	Tests for estimateExpectedValue:
+		//	Tests for estimateAverageValue:
 		//	 Outputs will vary, but should be close to indicated values.
-		System.out.println(estimateExpectedValue(10));		// Output: ~6.0
-		System.out.println(estimateExpectedValue(50));		// Output: ~11.0
-		System.out.println(estimateExpectedValue(100));		// Output: ~15.0
+		System.out.println(estimateAverageValue(10));		// Output: ~6.0
+		System.out.println(estimateAverageValue(50));		// Output: ~11.0
+		System.out.println(estimateAverageValue(100));		// Output: ~15.0
 	}
 
 	/**
@@ -87,7 +87,7 @@ public class Simulation {
 	 * @return	The average number of guests to have heard the rumour, calculated
 	 *					by running the simulation multiple times.
 	 */
-	public static double estimateExpectedValue(int n) {
+	public static double estimateAverageValue(int n) {
 		//	To be implemented in Activity #2, Exercise 2
 	}
 

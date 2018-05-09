@@ -35,10 +35,10 @@
 	\pagebreak
 
 	\section{Background}
-		Computer scientists design simulations in order to test hypothesis, examine effects of different variables, and predict outcomes of different phenomena that are otherwise difficult to observe. They are employed in this capacity by a wide range of different fields and have become an integral part of many research studies.\\[\baselineskip]
-	  In this lab, you will be creating, running, and examining a simulation expressed as a thought exercise for Computer Science. You will also consider how this simulation might be used to examine a variety of different applications.
+		Computer scientists design simulations in order to test hypotheses, examine effects of different variables, and predict outcomes of different phenomena that are otherwise difficult to observe. They are employed in this capacity by a wide range of different fields and have become an integral part of many research studies.\\[\baselineskip]
+	  In this lab, you will be creating, running, and examining a simulation expressed as a thought exercise for Computer Science. You will also consider how this simulation might be used to examine a variety of different scenarios.
 
-	  \subsection{Simulation: The Rumor}
+	  \subsection{Simulation: The Rumour}
 		  Imagine that Alice is throwing a party for $n$ guests, including Bob. Bob starts a rumour about Alice by telling it to one of the other guests. A person hearing this rumour for the first time will immediately tell it to one other guest, chosen at random from all the people at the party except Alice and the person from whom they heard it. If a person (including Bob) hears the rumour for a second time, he or she will not propagate it further.
 
 	  \subsection{Examples}
@@ -88,14 +88,14 @@
 			\begin{enumerate}
 				\item Create the method, \code{estimateProbability()}, that will accept \code{n}, the number of guests (including Bob) invited to Alice's party, and run the simulation in order to return an estimation for the probability that \emph{at least} \code{r} guests will hear the rumour before it stops propagating.\\
 				{\textbf{Note:} You will have to decide how many times to run the simulation in order to provide a good estimate of this probability.}
-				\item Create the method, \code{estimateExpectedValue()}, that will accept \code{n}, the number of guests (including Bob) invited to Alice's party, and run the simulation in order to return the average number of people to hear the rumour.\\
+				\item Create the method, \code{estimateAverageValue()}, that will accept \code{n}, the number of guests (including Bob) invited to Alice's party, and run the simulation in order to return the average number of people to hear the rumour.\\
 				{\textbf{Note:} You will have to decide how many times to run the simulation in order to provide a good estimate of this average.}
 			\end{enumerate}
 
 		\subsection{Questions}
-			\QBox{Briefly explain how you chose the number of times to run the simulation for each \code{estimateProbability()} and \code{estimateExpectedValue().}}{4cm}
+			\QBox{Briefly explain how you chose the number of times to run the simulation for each \code{estimateProbability()} and \code{estimateAverageValue().}}{4cm}
 			\ \\[9pt]
-			\QBox{How does varying the value of \code{n} affect the values returned by \code{estimateProbability()} and \code{estimateExpectedValue()}. Discuss trends rather than specific values.}{4cm}
+			\QBox{How does varying the value of \code{n} affect the values returned by \code{estimateProbability()} and \code{estimateAverageValue()}. Discuss trends rather than specific values.}{4cm}
 
 \pagebreak
 
@@ -105,7 +105,7 @@
 		\ \\[9pt]
 		\QBox{Why is it important to write simulations so that they can be run with various different input values as well as multiple times with the same input values?}{4cm}
 		\ \\[9pt]
-		\QBox{Which part of implementing \code{runSimulation()}, \code{estimateProbability()}, or \code{estimateExpectedValue()} did you find most challenging? How did you overcome these challenges?}{4cm}
+		\QBox{Which part of implementing \code{runSimulation()}, \code{estimateProbability()}, or \code{estimateAverageValue()} did you find most challenging? How did you overcome these challenges?}{4cm}
 		\ \\[9pt]
 		\QBox{What new programming techniques or knowledge did you learn as a result of this lab?}{4cm}
 
