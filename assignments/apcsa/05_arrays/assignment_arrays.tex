@@ -20,7 +20,9 @@
 
     \GreenQuestion{Write the method, \code{reverse()}, that reverses the order of a one-dimensional array of integers.}
 
-    \GreenQuestion{Write the method, \code{scalarMult()}, that accepts a two-dimensional array of \code{doubles} and a \code{double} scalar and returns a two-dimensional array of the same dimensions in which each element is the original value multiplied by the given scalar.}
+    \GreenQuestion{Write the method, \code{scalarMult()}, that accepts a two-dimensional array of \code{doubles} and a \code{double} scalar and returns a two-dimensional array of the same dimensions in which each element is the original value multiplied by the given scalar.\\
+    {\small\textbf{Note:} Your method should not modify the original array passed to it.}
+    }
 
     \YellowQuestion{\emph{Euclidean Distance.} The \emph{Euclidean Distance} between two points of arbitrary dimension, $(a_1, b_1, c_1, ...)$ and $(a_2, b_2, c_2, ...)$ is defined as:}
       \[
@@ -33,8 +35,15 @@
           &= \sqrt{57}\\
           &\approx 7.5498
       \end{aligned}\]
-    Write a method that will accept two, arrays of doubles representing $n$-dimensional points and calculate the \emph{Euclidean Distance} between them.
+    Write a method that will accept two arrays of doubles representing $n$-dimensional points and calculate the \emph{Euclidean Distance} between them.\\
+    {\small\textbf{Note:} Treat as a precondition that each array is of equal length.}
     
-    \RedQuestion{\emph{Longest Plateau.} Given an array of integers, find the length and location of the longest contiguous sequence of equal values where the values of the elements just before and just after the sequence are smaller.}
+    \RedQuestion{
+    \begin{parts}
+      \part \emph{Longest Sequence.} Given an array of integers, find the length and location of the longest contiguous sequence of equal values.
+      \part \emph{Longest Plateau.} Given an array of integers, find the length and location of the longest contiguous sequence of equal values where the values of the elements just before and just after the sequence are smaller.
+    \end{parts}
+    {\small\textbf{Note:} Only submit your solution to part (b) of this question.}
+    }
   \end{questions}
 \end{document}
