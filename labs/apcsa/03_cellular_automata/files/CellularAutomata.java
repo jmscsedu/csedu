@@ -61,8 +61,8 @@ public class CellularAutomata {
 }
 
 class CellularAutomaton {
-  private int[] cells;        //  array to hold the current cell states
-  private int[] rules;        //  array to hold the current rule values
+  protected int[] cells;        //  array to hold the current cell states
+  protected int[] rules;        //  array to hold the current rule values
 
   /**
    * Initializes a CellularAutomaton of array size n. The rules should be
@@ -106,7 +106,7 @@ class CellularAutomaton {
    *  Precondition: index is valid for the current group of cells.
    * @return  A denary value representing the given cell's neighbourhood.
    */
-  private int getNeighbourValue(int index) {
+  protected int getNeighbourValue(int index) {
     //  To be implemented in Activity #1, Exercise 1B(i)
   }
 
@@ -115,7 +115,7 @@ class CellularAutomaton {
    *
    * @return  An array representing the next generation of cells.
    */
-  private int[] getNextGeneration() {
+  protected int[] getNextGeneration() {
     //  To be implemented in Activity #1, Exercise 1B(ii)
   }
 
@@ -128,7 +128,7 @@ class CellularAutomaton {
    * @return  An array representing the rule set from the given denary rule
    *          number.
    */
-   private int[] getRulePattern(int ruleN) {
+   protected int[] getRulePattern(int ruleN) {
      // To be implemented in Activity #1, Exercise 2A
    }
 
