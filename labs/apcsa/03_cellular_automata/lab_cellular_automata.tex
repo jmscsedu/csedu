@@ -37,8 +37,6 @@
 		\end{center}
 	\end{coverpages}
 
-	\blankpage
-
 	\thispagestyle{empty}
 	\tableofcontents
 
@@ -58,10 +56,10 @@
 
 	  The above image is of the first few generations of an \emph{elementary cellular automaton}, a concept discussed at length in Stephen Wolfram's massive work: \emph{A New Kind of Science}. In this text, Wolfram continues the work first started in the 1940's, when Stanislaw Ulam and John von Neumann suggested the use of cellular automata for a number of different, important areas of research having to do with replication of various different natural and technological systems (von Neumann, in particular, was interested in self-replicating robots).\\[\baselineskip]
 	  A cellular automaton attempts to represent these systems as a grid of cells, each of which is in a specific current state. These cells will evolve based on the states of cells in their \emph{neighborhood}, an important concept that will be discussed at length shortly. Once these cells have evolved, the entire set of cells enters a new state, called a \emph{generation} of the cellular automaton.\\[\baselineskip]
-	  Although Wolfram's assertation that the study of these ``cellular automata'' are relevant for all branches of science can be controversial, their academic interest within the computer sciences is fairly undisputed. In this lab, we will be looking at the concept of \emph{elementary cellular automata}, a set of cellular automatons based on a single-dimensional array of cells that evolve according to a number of preset, known rules.
+	  Although Wolfram's assertation that the study of these ``cellular automata'' are relevant for all branches of science can be controversial, their academic interest within the computer sciences is fairly undisputed. In this lab, we will be looking at the concept of \emph{elementary cellular automata}, a set of cellular automatons based on a single-dimensional array of cells that evolve according to a number of preset rules.
 
 		\subsection{Elementary Cellular Automata}
-		  An elementary cellular automaton is a single-dimensional array of cells, each of which can be in one of two sets ($0$ and $1$ or ``off'' and ``on'', however you'd like to think of it). A neighborhood for each cell is comprised of three cells: the cell itself, and the cells on either side of it (left and right). Additionally, the starting state (often referred to as ``generation zero'') has all cells in the same state, except for the very center cell. A visualisation of the starting state for every elementary cellular automaton is below.
+		  An elementary cellular automaton is a single-dimensional array of cells, each of which can be in one of two states ($0$ and $1$ or ``off'' and ``on'', however you'd like to think of it). A neighborhood for each cell is comprised of three cells: the cell itself, and the cells on either side of it (left and right). Additionally, the starting state (often referred to as ``generation zero'') has all cells in the same state, except for the very center cell. A visualisation of the starting state for every elementary cellular automaton is below.
 
 		  \begin{center}
 		    \begin{tikzpicture}[b/.style={draw, minimum size=4mm, fill=black},w/.style={draw, minimum size=4mm},m/.style={matrix of nodes, column sep=1pt, row sep=0pt, draw}, node distance=1pt]
@@ -387,10 +385,11 @@
 	    \begin{enumerate}
 	      \item Complete the \code{CellularAutomaton} class with the following specifications:
 	        \begin{enumerate}
-	          \item A constructor whose sole parameter is the size (number of array elements) of the automation. Default \code{rules} values should be in accordance to Rule \#90 described in the background. The \code{cells} array should be initialized so that the middle cell is ``on''.
-	          \item Two private helper methods:
+	          \item A constructor whose sole parameter is the size (number of array elements) of the automation. Default \code{rules} values should be set to Rule \#90 described in the background. The \code{cells} array should be initialized so that the middle cell is ``on''.
+	          \item Two helper methods:
 	          \begin{enumerate}
-	            \item \code{getNeighbourValue} which returns the decimalisation of the binary configuration for a given cell and its neighbours.
+	            \item \code{getNeighbourValue} which returns the decimalisation of the binary configuration for a given cell and its neighbours.\\
+							{\small\textbf{Note:} Remember to treat the ``edge cases'' differently. See the background for more information.}
 	            \item \code{getNextGeneration} which evolves the automation according to its rules.
 	          \end{enumerate}
 	          \item One public method, \code{evolve}, which evolves the automation and prints the new generation to the console.
@@ -398,7 +397,7 @@
 
 	      \item Add the following to the \code{CellularAutomaton} class:
 	        \begin{enumerate}
-	          \item A private helper method, \code{getRulePattern}, which takes a decimal \code{int} value and returns a set of rules corresponding to that value.
+	          \item A helper method, \code{getRulePattern}, which takes a decimal \code{int} value and returns a set of rules corresponding to that value.
 	          \item An overloaded constructor that allows the specification of a rule number to populate \code{rules} with.
 	        \end{enumerate}
 	    \end{enumerate}
@@ -417,7 +416,7 @@
 		\subsection{Exercises}
 			\begin{enumerate}
 				\item Create the \code{WrappingCellularAutomaton} subclass of \code{CellularAutomaton} in which edges ``wrap-around''. That is, the left-neighbour of cell \code{0} is actually at index \code{length - 1} and the right neighbour of cell \code{length - 1} is actually at index \code{0}.\\
-				{\small\textbf{Note:} You will only receive full credit for this credit if you full advantage of inheritance through subclassing.}
+				{\small\textbf{Note:} You will only receive full credit for this exercise if you take full advantage of inheritance through subclassing.}
 				\item Create the \code{SpecialCaseCellularAutomaton} subclass of \code{CellularAutomaton} in which edges are given a special set of rules to handle only having two neighbours. You should implement a constructor that will accept two rule numbers, one for the main set of rules and one for the special edge cases.\\
 				{\small\textbf{Note:} Because there are only two neighbours for these special edge cases, you will only need to store a total of $4$ different cases, with a maximum rule number of $16$.}
 			\end{enumerate}
@@ -425,12 +424,12 @@
 		\subsection{Questions}
 			\QBox{How are the patterns that emerge from the \code{WrappingCellularAutomaton} different from those of the base \code{CellularAutomaton} for the same rule number? How are they similar?}{4cm}
 			\ \\[9pt]
-			\QBox{What base pattern did you choose for the four possibility of edge cases in \code{SpecialCaseCellularAutomaton}? What led you to choose this pattern?}{4cm}
+			\QBox{What base pattern did you choose for the four possibilities of edge cases in \code{SpecialCaseCellularAutomaton}? What led you to choose this pattern?}{4cm}
 
 	\pagebreak
 
 	\section{Final Analysis}
-		\QBox{Find two sets of cellular automaton rules that result in the same pattern. Explain why this occurs.}{3cm}
+		\QBox{Find two sets of cellular automata rules that result in the same pattern. Explain why this occurs.}{3cm}
 	  \ \\[9pt]
 	  \QBox{Experiment with changing the pattern for Generation $0$ in your \code{CellularAutomaton} class. How does the starting pattern affect the overall pattern of the cellular automata.}{3cm}
 	  \ \\[9pt]
