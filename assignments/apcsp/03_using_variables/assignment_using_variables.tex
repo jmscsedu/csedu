@@ -8,7 +8,7 @@
 \begin{document}
   \begin{questions}
     %Random
-    \BlueQuestion{The method call, \code{random(256)} will generate a random value between $0$ and $255$. Create a Processing program that will generate and store three random values for red, green, and blue and draw a circle using this random colour as its fill. Run your program multiple times to observe the random colour effect.}
+    \BlueQuestion{The method call, \code{random(256)} will generate a random value between $0$ and $255$. Create a Processing program that will generate and store three random values for red, green, and blue and draw a circle using this random colour as its fill. Run your program multiple times to observe the random fill colour.}
 
     %Explanation as to initialization purpose?
     \BlueQuestion{Explain which data type you'd use to store each of the following pieces of information.}
@@ -30,7 +30,10 @@
     \GreenQuestion{The \code{int()} method will accept a non-integer parameter and attempt to convert it into an integer. For instance, \code{int(4.7)} will return the integer value of \code{4}. Create a Processing sketch to \code{print()} the result of \code{int('a')}. What do you think the printed value indicates? Print a number of other characters to test your claim.}
 
     %Modify size of dartboard?
-    \YellowQuestion{Using a \code{float} variable, \code{dartBoardScale}, modify your dartboard drawing program from Assignment \#2 so that it will scale by a factor of \code{dartBoardScale}. That is, \code{dartBoardScale=0.5} will produce a dartboard half the size of the original, while \code{dartBoardScale=2.0} will produce one double in size.}
+    \YellowQuestion{Using a \code{float} variable, \code{dartBoardScale}, modify your dartboard drawing program from Assignment \#2 so that it will scale by a factor of \code{dartBoardScale}. That is, \code{dartBoardScale=0.5} will produce a dartboard half the size of the original, while \code{dartBoardScale=2.0} will produce one double in size.
+    
+    {\small\textbf{Note:} Do not use the Processing \code{scale()} method as this has additional undesirable effects.}
+    }
 
     \RedQuestion{Complete each of the following exercises.}
       \begin{parts}
