@@ -26,8 +26,11 @@
     %Syntax Errors
     \GreenQuestion{A common error beginning programmers face with the \code{for}-loop is illustrated in the code segment below:}
       \begin{lstlisting}
-        for (int i = 0; i < 100; i = i + 5); 
+        int i = 0;
+        while (i < 100); { 
           line(i, 0, i, height);
+          i = i + 5;
+        }
       \end{lstlisting}
       \begin{parts}
         \part Identify the error in the code above.
