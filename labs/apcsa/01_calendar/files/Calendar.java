@@ -80,5 +80,16 @@ public class Calendar {
 	public static void printCalendar(int month, int year) {
 		//	To be implemented in Activity #2, Exercise 2
 	}
+
+	/**
+	 * A fix to the Java built in modulus operator (%) to behave more
+	 * like mathematical modulo.
+	 * @param n
+	 * @param m
+	 * @return returns n mod m as expected mathematically
+	 */
+	 public static int mod(int n, int m) {
+		 return (n % m + m) % m;
+	 }
 }
 
