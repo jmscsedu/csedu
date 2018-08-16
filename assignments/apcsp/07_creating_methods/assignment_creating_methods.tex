@@ -45,15 +45,6 @@
     \GreenQuestion{Create the \code{dartboard()} method which will take as its sole parameter, \code{scale}, to use as the scale of the dartboard. Use your most recent rendition of the Dartboard program from Assignment \#5 as the basis for this method.}
 
     \YellowQuestion{
-      Implement the \code{transformAndDrawPoint()} method with the following definition:
-      \begin{center}
-        \code{transformAndDrawPoint(x, y, xMin, yMin, xMax, yMax, size)}
-      \end{center}
-      which will transform the point, $(x, y)$, from a coordinate plane defined by $(xMin, yMin), (xMax, yMax)$ to one defined by $(0, 0), (width, height)$ and draw it on the screen as a circle centered at $(x^\prime, y^\prime)$ with diameter $size$.
-    }\\
-    {\small\textbf{Note:} You may want to use your solution to drawing a graph from Assignment \#5 in order to guide and test your solution for this question.}
-
-    \RedQuestion{
       Revisit your most recent Processing Bee implementation (Assignment \#3) to implement each of the following.
       \begin{parts}
         \part The \code{drawBee()} method which accepts the parameters, \code{x} and \code{y}, and draw the Processing Bee centered on the given \code{x} and \code{y}.
@@ -61,5 +52,14 @@
         \part Change your solution to part (a) to call your method from part (b). Explain why this approach might be beneficial.
       \end{parts}
     }
+
+    \RedQuestion{
+      Implement the \code{transformAndDrawPoint()} method with the following definition:
+      \begin{center}
+        \code{transformAndDrawPoint(x, y, xMin, yMin, xMax, yMax, size)}
+      \end{center}
+      which will transform the point, $(x, y)$, from a coordinate plane defined by $(xMin, yMin), (xMax, yMax)$ to one defined by $(0, 0), (width, height)$ and draw it on the screen as a circle centered at $(x^\prime, y^\prime)$ with diameter $size$.
+    }\\
+    {\small\textbf{Note:} You may want to use your solution to drawing a graph from Assignment \#5 in order to guide and test your solution for this question.}
   \end{questions}
 \end{document}
