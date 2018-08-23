@@ -1,0 +1,127 @@
+\input{includes/lab_preamble}
+
+\def\LabCourse{AP Computer Science Principles}
+\def\LabNumber{01}
+\def\LabTitle{Building a Game}
+
+\begin{document}
+	\begin{coverpages}
+		\ \\[2cm]
+		\begin{center}
+			\huge
+			\textbf{\LabTitle}
+
+			\Large
+			\LabCourse
+		\end{center}
+
+		\vspace{1.5cm}
+
+		\begin{center}
+			\includegraphics[scale=0.45]{graphics/logo_black}
+
+			\vspace{2.5cm}
+
+			\Large
+			Name: \rule{11.5cm}{0.1pt}
+		\end{center}
+	\end{coverpages}
+
+	\blankpage
+
+	\thispagestyle{empty}
+	\tableofcontents
+
+	\pagebreak
+
+	\section{Activity \#1}
+	\subsection{Introduction}
+		In this activity, you will be programming the game logic necessary to click on our Processing Bee and respond accordingly. The area of the screen reprsenting a particular game components clickable area is generally known as that component's ``hit box''. Although these hit boxes can be very specific, conforming exactly to a particular component's dimensions, the earliest and easiest hit boxes are just that: rectangular boxes representing where you could click on, or ``hit'', a particular object. You will be programming this simple form of a hit box by identifying the specific location and dimensions of this hit box for a randomly placed bee, identifying whether or not the mouse was clicked within that box, and responding accordingly.
+
+	\subsection{Exercises}
+		\begin{enumerate}
+			\item Implement a program to draw a Processing Bee in a random location on the screen.\\
+						  {\small\textbf{Note:} Because you will need to know the location of the bee, you should keep track of the \code{x} and \code{y} coordinates for the bee in global variables.}
+
+			\item Implement the \code{checkHit()} method which will be triggered from the \code{mouseClicked()} method. It should return \code{true} if the location of the mouse click represents a ``hit'' in accordance to the current bee's calculated hit box and \code{false} otherwise.\\
+						{\small\textbf{Note:} It may be helpful to temporarily draw the hit box for each bee in order to accurately test this method.}
+
+			\item Have your program respond to correctly hitting a bee by clearing the old bee and generating a new one. This process should continue as long as the program is running.
+		\end{enumerate}
+
+	\subsection{Questions}
+		\QBox{Why is it important to separate the program logic of checking for a ``hit'' from the logic of drawing or even responding to a mouse click?}{2.5cm}
+		\ \\[9pt]
+		\QBox{How would you modify your program to account for more than one clickable bee on the screen at a given time?}{2.5cm}
+		\ \\[9pt]
+		\QBox{How would you modify your program to allow the bee(s) to move around the screen while remaining clickable?}{2.5cm}
+
+\pagebreak
+
+%Adding "Game" Elements:
+% - Score
+% - Timer
+% - Lives
+\section{Activity \#2}
+	\subsection{Introduction}
+		In this activity, you will be introducing game logic allowing for an actual game to be played! In particular: you will introduce a way to keep track of player score, a timer for ending the game, and a timer for replacing the bee with a new one without the user clicking on it.
+	\subsection{Exercise}		
+		Add each of the following features to your ``Whack-a-Bee'' game:
+		\begin{enumerate}
+			\item A tracked score. The user should score points each time he/she successfully clicks on the bee.
+			\item A countdown timer. The game should enter a ``Game Over'' state as soon as the countdown timer finishes.
+			\item A bee timer. The bee should disappear after a set amount of time without being clicked on. This timer should not be displayed to the user.
+		\end{enumerate}
+	\subsection{Questions}
+		\QBox{Another way to implement a ``Game Over'' state is to have a set number of \emph{lives} for the player, with the player losing a life every time the bee fails to be clicked on before disappearing. Explain how the implementation of this type of feature differs from the one we created in this activity.}{6cm}\\[9pt]
+		\QBox{In what ways could you introduce levels of difficulty into your game? How would you implement them in Processing?}{6cm}
+\pagebreak
+
+\section{Activity \#3}
+	\subsection{Introduction}
+		In this activity, you will be presented with a range of options to choose from to enhance your game. Each of these options contributes to a more polished gaming experience and a more impressive end result.
+	\subsection{Exercise}
+		You must select \emph{thirty} ($30$) points from the following range of options:
+		
+		\begin{tabular}{p{0.15\textwidth} p{0.75\textwidth}}
+			\textbf{5 Points:} & \begin{itemize}
+				\item Introduce Game States for ``Start State'', ``Game State'' and ``Game Over State'',
+				\item Add a second clickable bee to the game,
+				\item Add a graphical representation for the bee timer. This should be something that changes about the bee (colour, alpha, size, etc.) and not a text-based timer,
+				\item Add sound effects to your game using the Processing \emph{Sound} library,
+				\item Increase difficulty of the game over time (either based on the timer or the current score) in some way (ex: making the bees dissappear faster, making the bees appear smaller, etc.),
+				\item Introduce a ``number of lives'' measure for ending the game. This should reduce the number of remaining lives after each missed bee and end the game when the number of lives reaches zero,
+				\item Add a background image to the game using Processing's image tools.
+			\end{itemize} \\
+			\textbf{10 Points:} & \begin{itemize}
+				\item Make difficulty level selectable as part of a ``Start State'' portion of your program. Include at least three difficulty levels,
+				\item Introduce movement for each bee. This should include some random element to it to make the movement of the bee less predictable,
+				\item Add cheat codes to your game to accomplish each of the following:
+					\begin{itemize}
+						\item pause the game timer,
+						\item pause the bee timer,
+						\item reset all timers and scores,
+						\item add (5) points to the current score
+					\end{itemize}
+			\end{itemize} \\
+			\textbf{15 points:} & \begin{itemize}
+				\item Use an \emph{array} to store the locations of the previous $5$ killed bees and display them in some way on the game screen. These ``killed bees'' should be distinguished in some way from the currently active bee.
+				\item Keep track of the all-time high score for your program and display it on the screen. Store this high score in a file so that it persists between runnings of the program.
+			\end{itemize}
+		\end{tabular}
+%Game States?
+
+\pagebreak
+
+\section{Final Analysis}
+	\QBox{Which part of Activity \#1 did you find most challenging? How did you overcome this challenge?}{4cm}
+	\ \\[9pt]
+	\QBox{Which part of Activity \#2 did you find most challenging? How did you overcome this challenge?}{4cm}
+	\ \\[9pt]
+	\QBox{Why did you choose the options you did for Activity \#3?}{4cm}
+	\ \\[9pt]
+	\QBox{What new programming techniques or methods did you learn as part of this project?}{4cm}
+
+\pagebreak
+
+\end{document}
