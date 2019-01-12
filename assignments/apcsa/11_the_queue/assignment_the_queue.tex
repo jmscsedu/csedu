@@ -8,7 +8,7 @@
   \begin{questions}
     \BlueQuestion{Add a variable to our \code{Queue} class in order to allow the \code{size()} method to be run in $O(1)$ (i.e., constant) time. Make all appropriate changes to our implementation of \code{Queue} to utilize this new variable.}
 
-    \BlueQuestion{Make all necessary changes to \code{Queue} in order to make it \emph{generic}.}
+    \BlueQuestion{Explain how you can use two stacks to emulate a queue.}
 
     \GreenQuestion{Suppose that a client performs an intermixed sequence of \code{enqueue()} and \code{dequeue()} operations on a queue of integers. The enqueue operations put the integers $0$ through $9$, in order, onto the queue; the dequeue operations print out the return value. Which of the following sequence(s) could not occur?}
       \begin{enumerate}[label=\texttt{\alph*.}]
@@ -18,8 +18,8 @@
         \item 4 3 2 1 0 5 6 7 8 9
       \end{enumerate}
 
-    \GreenQuestion{Explain how you can use two stacks to emulate a queue. Can you think of an example where ``physical'' limitations might require this type of emulation?}
-
+    \GreenQuestion{A \emph{priority queue} is an abstract data structure which adds a \emph{priority} attribute to each element within it. Elements with a high priority ``jump the queue'' and are served first. Describe an application for which a priority queue would be more useful than a traditional queue.}
+    
     \YellowQuestion{\emph{Circular Queue.} Due to its nature, a queue that uses an array for its data storage could simultaneously be full and empty. In other words, it may have neither any elements in it nor any room to hold additional elements. Modify our \code{Queue} implementation to make it \emph{circular}. That is, if there is space at the beginning of the array, but none at the end, the data should ``wrap around'' to use the available space.}\\[4pt]
 
     \RedQuestion{\emph{The Josephus Problem.} In the Josephus problem from antiquity, $N$ people are in dire straits and agree to the following strategy in order to reduce their population to a single person. They arrange themselves in a circle (at positions numbered $0$ through $N - 1$) and proceed around the circle, eliminating every $M$th person until only one person is left. Legend has it that Josephus figured out where to sit in order to avoid being eliminated. Write a method, \code{Josephus()}, that takes $N$ and $M$ as parameters and uses \code{Queue} to print out the order in which people are eliminated (and thus would show where Josephus should sit in the circle).\\[4pt]
