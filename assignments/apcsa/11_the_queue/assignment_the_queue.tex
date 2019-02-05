@@ -19,10 +19,15 @@
       \end{enumerate}
 
     \GreenQuestion{A \emph{priority queue} is an abstract data structure which adds a \emph{priority} attribute to each element within it. Elements with a high priority ``jump the queue'' and are served first. Describe an application for which a priority queue would be more useful than a traditional queue.}
-    
-    \YellowQuestion{\emph{Circular Queue.} Due to its nature, a queue that uses an array for its data storage could simultaneously be full and empty. In other words, it may have neither any elements in it nor any room to hold additional elements. Modify our \code{Queue} implementation to make it \emph{circular}. That is, if there is space at the beginning of the array, but none at the end, the data should ``wrap around'' to use the available space.}\\[4pt]
 
-    \RedQuestion{\emph{The Josephus Problem.} In the Josephus problem from antiquity, $N$ people are in dire straits and agree to the following strategy in order to reduce their population to a single person. They arrange themselves in a circle (at positions numbered $0$ through $N - 1$) and proceed around the circle, eliminating every $M$th person until only one person is left. Legend has it that Josephus figured out where to sit in order to avoid being eliminated. Write a method, \code{Josephus()}, that takes $N$ and $M$ as parameters and uses \code{Queue} to print out the order in which people are eliminated (and thus would show where Josephus should sit in the circle).\\[4pt]
+    \YellowQuestion{\emph{The Josephus Problem.} In the Josephus problem from antiquity, $N$ people are in dire straits and agree to the following strategy in order to reduce their population to a single person. They arrange themselves in a circle (at positions numbered $0$ through $N - 1$) and proceed around the circle, eliminating every $M$th person until only one person is left. Legend has it that Josephus figured out where to sit in order to avoid being eliminated. Write a method, \code{Josephus()}, that takes $N$ and $M$ as parameters and uses \code{Queue} to print out the order in which people are eliminated (and thus would show where Josephus should sit in the circle).\\[4pt]
     {\small\textbf{Example:} \code{Josephus(7, 2)} would print: \code{1 3 5 0 4 2 6}.}}
+
+    \RedQuestion{\emph{Circular Queue.} Due to its nature, a queue that uses an array for its data storage could simultaneously be full and empty. In other words, it may have neither any elements in it nor any room to hold additional elements.}
+      \begin{parts}
+        \part Modify our \code{Queue} implementation to make it \emph{circular}. That is, if there is space at the beginning of the array, but none at the end, the data should ``wrap around'' to use the available space.
+        \part Briefly explain why this approach is \emph{more efficient} than shifting the elements of the queue forward after each \code{dequeue} operation.
+      \end{parts}
+
   \end{questions}
 \end{document}
