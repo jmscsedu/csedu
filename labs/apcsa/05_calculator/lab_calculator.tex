@@ -58,7 +58,7 @@
 
 	\section{Background}
 		Modern calculators and even many search engines have become adept at reading strings of mathematical symbols and being able to calculate the value of the given expression. Type into a Google search bar the expression: \code{3 + 4 * 8 - 16 / 32} and Google will correctly return the value \code{34.5}. In this lab, you will be implementing methods that will take in strings of characters, like the example above, and return the correctly calculated value of the expression.\\[\baselineskip]
-		Before we begin, we first need to explore a number of different ways that have been developed to write a given mathematical expression. Each method differs in the abilities of humans and computers to read and process them. In fact, our tasks will primarily hinge on teaching a computer to read and process the most ``computer-readable'' version and then convert the others to that version.\\[\baselineskip]
+		Before we begin, we first need to explore a number of different ways to write a given mathematical expression. Each method differs in the abilities of humans and computers to read and process them. In fact, our tasks will primarily hinge on teaching a computer to read and process the most ``computer-readable'' version and then convert the others to that version.\\[\baselineskip]
 		Note that for the purposes of this lab, only the four basic, binary arithmetic operators ($+$, $-$, $\times$, $\div$) are going to be considered; however, all of the concepts explored here can be extended to handle more complex mathematical expressions and operations.
 
 		\subsection{Three Different Notations}
@@ -97,14 +97,14 @@
 	\section{Applications}
 		\QFilledBox{Although parenthesis are not explicitly required by prefix or postfix notation, they do help for human-readability, and so that you can better understand how these expressions are evaluated. Consider the following:
 			\[ -\ +\ 12\ 6\ 3\ \to -\ (+\ 12\ 6)\ 3 \]
-		The parenthesis make it more clear that the $+$ operator uses the two immediate operands that follow it. It is then clearer that the $-$ operator has operands: $(+\ 12\ 6)$ and $3$, or $18$ and $3$.\\[\baselineskip]
+		The parenthesis make it more clear that the $+$ operator uses the two immediate operands that follow it. It then follows that the $-$ operator has operands: $(+\ 12\ 6)$ and $3$, or $18$ and $3$.\\[\baselineskip]
 		Add parenthesis to each of the following prefix or postfix expressions.
 		}{
 			\ \\[24pt]
 			\begin{minipage}{0.25\textwidth}
 				$+\ \times\ 3\ 2\ -\ 6\ 4$
 			\end{minipage}\begin{minipage}{0.25\textwidth}
-				$+\ 5\ 7\ -\ 3\ \div\ 10\ 5$
+				$+\ +\ 5\ 7\ -\ 3\ \div\ 10\ 5$
 			\end{minipage}\begin{minipage}{0.25\textwidth}
 				$7\ 4\ -\ 6\ 5\ +\ \times$
 			\end{minipage}\begin{minipage}{0.25\textwidth}
@@ -142,13 +142,13 @@
 				{\small\textbf{Note:} Remember that, for our purposes, $\times \to *$ and $\div \to /$.}\\
 				{\small\textbf{Hint:} Use a stack to hold the operands.}
 				\item Implement the \code{evalPrefix()} method, which will take as a parameter a \code{String} holding a mathematical expression in prefix notation and return the result of evaluating that expression.\\
-				{\small\textbf{Hint:} You may want to consider evaluating the expression backwards (right to left).}
+				{\small\textbf{Hint:} You may want to use two stacks.}
 			\end{enumerate}
 
 		\subsection{Questions}
 			\QBox{Explain how you determined whether or not a given character/characters was an operation or an operand.}{4cm}
 			\ \\[9pt]
-			\QBox{Why is evaluating an expression in prefix notation backwards easier?}{4cm}
+			\QBox{Why does evaluation of \emph{prefix} notation benefit from the use of two stacks?}{4cm}
 
 	\pagebreak
 
@@ -158,7 +158,7 @@
 			In this activity, you will be implementing a method for processing and evaluating expressions in infix notation. Remember, for the purposes of this lab, we are only considering the four basic operators ($+, -, \times, \div$) and no parenthesis or brackets. Even so, infix notation has proven so challenging for computers to process that it is normally converted to either prefix or postfix notation first, then processed using evaluation methods for the given notation.
 
 		\subsection{The Shunting-Yard Algorithm}
-			In addition to encouraging the use of postfix notation, Edsger Dijkstra also invented an algorithm for converting from infix notation to postfix notation. Here is a simplified version of that algorithm, in order to handle only the operators selected for this exercise. Note that the term \emph{token} is used to represent a small part of the expression being processed which could be either an operator or operand.
+			In addition to encouraging the use of postfix notation, Edsger Dijkstra also invented an algorithm for converting from infix notation to postfix notation. Here is a simplified version of that algorithm, in order to handle only the operators selected for this exercise. Note that the term \emph{token} is used to represent a small part of the expression being processed which could be either an operator or operand. For our purposes, each token is separated by a single space (`` '').
 			\begin{enumerate}
 				\item Create a postfix string and operator stack.
 				\item While there are tokens to read:
@@ -207,4 +207,31 @@
 
 	\section{Template Class \& Test Cases}
 		\lstinputlisting[basicstyle=\small\ttfamily,tabsize=2]{files/Calculator.java}
+
+	\pagebreak
+	\blankpage
+
+	%Scoring Matrix
+	\section*{Scoring Matrix}
+	\vspace{0.25cm}
+
+	\renewcommand{\arraystretch}{2}
+	\begin{tabular} {*{4}{*{3}{| >{\bfseries\centering}p{0.0575\textwidth}}}|}
+		\hline
+		\multicolumn{12}{| c |}{\bfseries\Large\LabTitle}\\
+		\hline
+		\multicolumn{3}{| c |}{\bfseries Applications} & \multicolumn{3}{| c |}{\bfseries Activity \#1} & \multicolumn{3}{| c |}{\bfseries Activity \#2} & \multicolumn{3}{| c |}{\bfseries Final Analysis}\\
+		\hline
+		Q01 & 1 & \ & EX1 & 4 & \ & EX1 & 7 & \ & Q09 & 1 & \ \tabularnewline
+		\hline
+		Q02 & 1 & \ & EX2 & 5 & \ & EX2 & 2 & \ & Q10 & 1 & \ \tabularnewline
+		\hline
+		Q03 & 1 & \ & Q05 & 1 & \ & Q07 & 1 & \ & Q11 & 1 & \ \tabularnewline
+		\hline
+		Q04 & 1 & \ & Q06 & 1 & \ & Q08 & 1 & \ & Q12 & 1 & \ \tabularnewline
+		\hline
+	\end{tabular}
+
+	\vspace{0.25cm}
+	\textbf{Comments:}
 \end{document}
