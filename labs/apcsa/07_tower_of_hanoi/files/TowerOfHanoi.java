@@ -299,7 +299,7 @@ class HanoiPuzzle {
      *          disk exists.
      */
     public Disk remove() {
-      return (disks.empty()) ? disks.pop() : null;
+      return (disks.empty()) ? null : disks.pop();
     }
 
     /**
