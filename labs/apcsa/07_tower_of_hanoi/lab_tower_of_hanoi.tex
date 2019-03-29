@@ -49,7 +49,7 @@
 			\item A larger disk cannot be placed on top of a smaller disk.
 		\end{enumerate}
 
-		You are encouraged at this time to actually attempt this puzzle. If a physical copy of the Tower of Hanoi puzzle is not available, there have been multiple adaptations of it online and in mobile apps. A quick search for ``online Tower of Hanoi'' online or simply ``Tower of Hanoi'' in your app store of choice will turn one up that is free to play. Although the standard puzzle introduced by Lucas had eight disks, you should first try it with fewer disks (I suggest five or fewer). Hopefully, you will not only get a handle on how the rules interact with one another, but also be able to solve the puzzle a few times!
+		You are encouraged at this time to actually attempt this puzzle. If a physical copy of the Tower of Hanoi puzzle is not available, there have been multiple adaptations of it online and in mobile apps. A quick search for ``online Tower of Hanoi'' in your favourite search engine or simply ``Tower of Hanoi'' in your app store of choice will turn one up that is free to play. Although the standard puzzle introduced by Lucas had eight disks, you should first try it with fewer disks (I suggest five or fewer). Hopefully, you will not only get a handle on how the rules interact with one another, but also be able to solve the puzzle a few times!
 
 		\subsection{The Minimum Number of Moves}
 			Lucas' invention came with a story of the Tower of Brahma. In this story, there exists a temple with three posts and 64 golden disks. According to the myth, Brahmin priests work day and night to transfer the 64 golden disks from one of the posts to the other using the rules above. Once their work is complete, the world will come to an end.\\[\baselineskip]
@@ -62,7 +62,7 @@
 			\EBox{8-Disk Tower of Hanoi}{Using the formula above, the minimum number of moves required to solve Lucas' original 8-disk puzzle is:
 			\[ 2^{8} - 1 = 255 \]}
 			\ \\[9pt]
-			\EBox{64-Disk Tower of Brahma}{Use the formula above, the minimum number of moves required to solve the Tower of Brahma puzzle is:
+			\EBox{64-Disk Tower of Brahma}{Using the formula above, the minimum number of moves required to solve the Tower of Brahma puzzle is:
 			\[ 2^{64} - 1 \approx 1.8 \times 10^{19}\]
 			How large is this number? Consider this: if the priests were able to move a single disk every second, twenty-four hours a day, it would take over $584,542,046,090$ \emph{years} for them to complete the puzzle, far exceeding the estimated lifespan of the Universe.
 			}
@@ -84,7 +84,7 @@
 
 	\section{Activity \#1}
 		\subsection{Introduction}
-			In this activity, you will be creating a method that will help you visualize the moves you are making to solve of a Tower of Hanoi puzzle, as well as a method used to calculate the tower needed as a ``buffer'' when solving a given puzzle. Although neither of these methods are complex, they will prove to be an immense help in the solving of the actual Tower of Hanoi puzzle in Activity \#2.
+			In this activity, you will be creating a method that will help you visualize the moves you are making to solve a Tower of Hanoi puzzle, as well as a method used to calculate the tower needed as a ``buffer'' when solving a given puzzle. Although neither of these methods are complex, they will prove to be an immense help in the solving of the actual Tower of Hanoi puzzle in Activity \#2.
 
 		\subsection{Exercises}
 		 \begin{enumerate}
@@ -99,7 +99,7 @@
 				{\small\textbf{Note:} You should use the \code{move()} method built as part of the \code{HanoiPuzzle} class.}
 
 			\item Implement the \code{calcOther()} method. This method should take as parameters the numbers of two towers in the Tower of Hanoi puzzle and return the number of the third, ungiven tower.\\
-			{\small\textbf{Note:} Although this can be easily accomplished with a series of \code{if} statements, I encourage you to attempt to find a mathematical formula that can calculate the number of the ungiven tower without a single conditiona.}
+			{\small\textbf{Note:} Although this can be easily accomplished with a series of \code{if} statements, I encourage you to attempt to find a mathematical formula that can calculate the number of the ungiven tower without a single conditional.}
 		 \end{enumerate}
 
 		\subsection{Questions}
