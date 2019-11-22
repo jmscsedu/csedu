@@ -13,9 +13,9 @@ mkdir "$prefix/files"
 
 # Following lines are required for MacOS ('brew install coreutils' for grealpath):
 
-relative=$(grealpath --relative-to="$prefix" templates/)
-ln -s "$relative/includes" "$prefix/includes"
-ln -s "$relative/graphics" "$prefix/graphics"
+# relative=$(grealpath --relative-to="$prefix" templates/)
+# ln -s "$relative/includes" "$prefix/includes"
+# ln -s "$relative/graphics" "$prefix/graphics"
 
 # Following lines are used for linux:
 # ln -rs templates/includes "$prefix/includes"
