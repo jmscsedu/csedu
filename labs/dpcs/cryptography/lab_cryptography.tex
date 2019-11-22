@@ -81,7 +81,7 @@
 
 		\subsection{Evaluating Cryptographic Methods}
 			Although the historical crytographic techniques are interesting, the advent of modern digital computers means they have become extremely vulnerable to attack. Over the last several decades, it has become clear that any new cryptographic techniques must be developed with the ever-increasing computational power of modern devices in mind. \emph{Cryptanalysis} works to find any potential weaknesses in encryption methods. ``Breaking'' a cryptographic technique usually involves the study and analysis of the specific algorithms used in encrypting a message in the hopes that some method can produce, with high regularity, a decrypted message through the examination and analysis of the encrypted one.\\[\baselineskip]
-			The methods by which cryptanalysis evaluates an ecryption algorithm for weaknesses, as well as the many other methods for attacking enciphered text are beyond the scope of this lab; however, it is an ever-growing field of study and one in which some students might find some interest in researching.\\[\baselineskip]
+			The methods by which cryptanalysis evaluates an encryption algorithm for weaknesses, as well as the many other methods for attacking enciphered text are beyond the scope of this lab; however, it is an ever-growing field of study and one in which some students might find some interest in researching.\\[\baselineskip]
 			It is also important to note that many of the cryptographic techniques employed today rely on the sheer difficulty of ``brute-force'' decryption or the difficulty in solving complex mathematical problems. Despite this, they are, theoretically, breakable; however, the time it would take to break many of these methods using modern, or even speculated, computers far outpaces the viability of the information they are protecting. In other words, if it takes several thousand, million, or billion years to read encrypted information, the likelihood that it would be useful to do so becomes increasingly slim.
 
 	\pagebreak
@@ -155,7 +155,7 @@
 			Create the following methods in Python:
 			\begin{itemize}
 				\item The \code{generateRandomKey()} helper method which will generate a random binary string of the desired length.
-				\item The \code{binaryToString()}, \code{stringToBinary()}, and \code{XORStrings()} helper methods useful for the encryption and decryption process.
+				\item The \code{binaryToString()}, \code{stringToBinary()}, and \code{XORString()} helper methods useful for the encryption and decryption process.
 				\item The \code{encryptMessage()} method.
 				\item The \code{decryptMessage()} method.\\
 							{\small\textbf{Note:} This method should generate a new encryption key once a message has been successfully decrypted.}
@@ -229,7 +229,8 @@
 				\begin{itemize}
 					\item The \code{binaryToString()} and \code{stringToBinary()} helper methods.\\
 					\textbf{Note:} These methods should be identical to the ones from Exercise \#1.
-					\item The encryptMessage() method.
+					\item The encryptMessage() method.\\
+					\textbf{Note:} This method should only use the ``public key'' information: \code{(e, n)}.
 					\item The decryptMessage() method.
 				\end{itemize}
 				\textbf{Note:} Methods for modular exponentiation and finding modular inverses have been provided for you.
@@ -243,7 +244,7 @@
 	\section{Final Analysis}
 		\QBox{\emph{Private key} encryption techniques, such as the Advanced Encryption System (AES), provide significant improvements on processing speed and can overcome the message-length problems RSA faces. Nonetheless, one major weakness, that the private encryption key must be exchanged over potentially unsecure communication lines, persists. Explain how \emph{public key} encryption can be used to overcome this weakness.}{4cm}
 		\ \\[9pt]
-		\QBox{Private key encryption such as the RSA method described relies on a the mathematical idea that multiplication is easy, but prime factorization is hard. Why might this be a weakness in light of recent computing innovations?}{4cm}
+		\QBox{Private key encryption such as the RSA method described relies on the mathematical idea that multiplication is easy, but prime factorization is hard. Why might this be a weakness in light of recent computing innovations?}{4cm}
 		\ \\[9pt]
 		\QBox{Which method did you find the most challenging to create? Briefly explain why.}{4cm}
 		\ \\[9pt]
@@ -254,10 +255,10 @@
 	\pagebreak
 
 	\section{Template Class \& Test Cases}
-		\subsection*{Activity \#1}
+		\subsection*{Exercise \#1}
 		\lstinputlisting[basicstyle=\footnotesize\ttfamily,language=Python,tabsize=2]{files/exercise1.py}
 
 		\pagebreak
-		\subsection*{Activity \#2}
+		\subsection*{Exercise \#2}
 		\lstinputlisting[basicstyle=\footnotesize\ttfamily,language=Python,tabsize=2]{files/exercise2.py}
 \end{document}
