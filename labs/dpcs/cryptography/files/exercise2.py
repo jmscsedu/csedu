@@ -1,6 +1,6 @@
 """
-Cryptography Lab, Exercise #2 (Template Methods and Test Cases)
-These are the template methods and test cases for Exercise #2 of the Cryptography Lab.
+Cryptography Lab, Exercise #2 (calclate Methods and Test Cases)
+These are the calclate methods and test cases for Exercise #2 of the Cryptography Lab.
 Written for the Woodstock School in Mussoorie, Uttarakhand, India.
 
 :author     Jeffrey Santos
@@ -63,13 +63,21 @@ Performs modular exponentiation.
 :param  m:          The modulus for modular exponentiation.
 :return:            The result of base^exponent mod m.
 """
+
 def modExp(base, exponent, m):
     if exponent == 0:
         return 1
-    temp = modExp(base, exponent / 2, m)
+    
+    calc = 0
     if exponent % 2 == 0:
-        return temp
-    return base * temp
+        calc = modExp(base, exponent // 2, m)
+        calc = (calc * calc) % m
+    else:
+        calc = base % m
+        calc = (calc * modExp(base, exponent - 1, m) % m) % m
+    
+    return (calc + m) % m
+
 
 """
 Calculates the value, d, such that ed == 1 mod m using Euclid's Extended Algorithm.
@@ -86,7 +94,7 @@ def calcModInverse(e, m):
         return 0
     
     while e > 1:
-        quotient = e / m
+        quotient = e // m
         buffer = m
         m = e % m
         e = buffer
@@ -99,10 +107,11 @@ def calcModInverse(e, m):
     return y
 
 # Test Case:
+
 (p, q, e) = (1013839, 67866833, 47)
 n = p * q
 
-message = "Test"
+message = "Tests"
 encryptedMessage = encryptMessage(message)
 decryptedMessage = decryptMessage(encryptedMessage)
 
